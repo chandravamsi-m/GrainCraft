@@ -4,117 +4,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us — GrainCraft Studio</title>
+  <title>Contact Us - GrainCraft Studio</title>
   <meta name="description"
     content="Get in touch with GrainCraft Studio. Whether you have a question about a commission or just want to say hello.">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="../assets/css/style.css">
 
-  <!-- JS Modules -->
-  <script src="../assets/js/theme.js"></script>
-  <script src="../assets/js/nav.js"></script>
-  <script src="../assets/js/components.js"></script>
-  <script src="../assets/js/animations.js" defer></script>
-  <script src="../assets/js/main.js" type="module" defer></script>
+  <script src="../assets/js/main.js" defer></script>
 </head>
 
 <body>
-
-  <!-- ============================================================
-         COMPONENT: Navigation
-         ============================================================ -->
   <nav id="navbar-placeholder" class="c-navbar"></nav>
 
   <main>
-    <!-- ============================================================
-             SECTION: Page Header
-             ============================================================ -->
-    <section class="section bg-secondary"
-      style="padding-top: calc(var(--header-height) + var(--space-3xl)); text-align: center;">
+    <section class="section bg-secondary page-hero page-hero-center">
       <div class="container">
         <div class="reveal">
           <span class="eyebrow">Get in Touch</span>
-          <h1>Let's build something beautiful.</h1>
-          <p style="max-width: 600px; margin: 0 auto;">We respond to all inquiries within 48 hours. For detailed custom
-            quotes, please use our <a href="quote.html" style="text-decoration: underline;">Quote Form</a>.</p>
+          <h1 class="u-mb-sm">Let's build something beautiful.</h1>
+          <p class="u-max-w-600 u-center u-opacity-80 u-leading-18">We respond to all inquiries within 48 hours. For detailed custom quotes, please use our <a href="quote.html" class="u-underline">Quote Form</a>.</p>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-             SECTION: Contact Form & Studio Details
-             ============================================================ -->
     <section class="section">
       <div class="container">
-        <div class="grid grid-2" style="gap: var(--space-3xl);">
-          <!-- Contact Form -->
+        <div class="grid grid-2 u-gap-3xl">
           <div class="reveal">
-            <h2 style="margin-bottom: var(--space-lg);">Send a Message</h2>
+            <h2 class="u-mb-lg">Send a Message</h2>
             <form action="#" method="POST" class="stack">
               <div class="grid grid-2">
-                <div class="stack" style="gap: var(--space-3xs);">
-                  <label for="name" class="text-accent" style="font-size: 0.75rem;">Full Name</label>
-                  <input type="text" id="name" name="name" placeholder="Elias Thorne"
-                    style="padding: 1rem; border: 1px solid var(--color-border); background: var(--color-bg-primary); color: var(--color-text-primary);"
-                    required>
+                <div class="stack u-gap-3xs">
+                  <label for="name" class="text-accent u-label">Full Name</label>
+                  <input type="text" id="name" name="name" placeholder="Elias Thorne" required>
                 </div>
-                <div class="stack" style="gap: var(--space-3xs);">
-                  <label for="email" class="text-accent" style="font-size: 0.75rem;">Email Address</label>
-                  <input type="email" id="email" name="email" placeholder="elias@example.com"
-                    style="padding: 1rem; border: 1px solid var(--color-border); background: var(--color-bg-primary); color: var(--color-text-primary);"
-                    required>
+                <div class="stack u-gap-3xs">
+                  <label for="email" class="text-accent u-label">Email Address</label>
+                  <input type="email" id="email" name="email" placeholder="elias@example.com" required>
                 </div>
               </div>
-              <div class="stack" style="gap: var(--space-3xs);">
-                <label for="subject" class="text-accent" style="font-size: 0.75rem;">Subject</label>
-                <select id="subject" name="subject"
-                  style="padding: 1rem; border: 1px solid var(--color-border); background: var(--color-bg-primary); color: var(--color-text-primary);">
+              <div class="stack u-gap-3xs">
+                <label for="subject" class="text-accent u-label">Subject</label>
+                <select id="subject" name="subject">
                   <option value="general">General Inquiry</option>
                   <option value="process">The Build Process</option>
                   <option value="press">Press & Media</option>
                   <option value="collab">Collaboration</option>
                 </select>
               </div>
-              <div class="stack" style="gap: var(--space-3xs);">
-                <label for="message" class="text-accent" style="font-size: 0.75rem;">Your Message</label>
-                <textarea id="message" name="message" rows="6" placeholder="Tell us about your project..."
-                  style="padding: 1rem; border: 1px solid var(--color-border); background: var(--color-bg-primary); color: var(--color-text-primary);"
-                  required></textarea>
+              <div class="stack u-gap-3xs">
+                <label for="message" class="text-accent u-label">Your Message</label>
+                <textarea id="message" name="message" rows="6" placeholder="Tell us about your project..." required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Send Message</button>
+              <button type="submit" class="btn btn-primary u-self-start">Send Message</button>
             </form>
           </div>
 
-          <!-- Studio Info & Map -->
           <div class="reveal">
-            <h2 style="margin-bottom: var(--space-lg);">Visit the Studio</h2>
-            <p style="margin-bottom: var(--space-xl);">Our workshop is located in the heart of the Industrial District.
-              Visits are available by appointment only.</p>
+            <h2 class="u-mb-lg">Visit the Studio</h2>
+            <p class="u-mb-xl">Our workshop is located in the heart of the Industrial District. Visits are available by appointment only.</p>
 
-            <div class="stack" style="gap: var(--space-lg);">
-              <div class="flex" style="align-items: flex-start;">
-                <div class="text-accent" style="min-width: 100px;">Location</div>
+            <div class="stack u-gap-lg">
+              <div class="flex u-items-start">
+                <div class="text-accent u-minw-100">Location</div>
                 <div>123 Artisan Way, Ste 405<br>Portland, OR 97201</div>
               </div>
-              <div class="flex" style="align-items: flex-start;">
-                <div class="text-accent" style="min-width: 100px;">Connect</div>
+              <div class="flex u-items-start">
+                <div class="text-accent u-minw-100">Connect</div>
                 <div>hello@graincraft.studio<br>+1 (503) 555-0123</div>
               </div>
-              <div class="flex" style="align-items: flex-start;">
-                <div class="text-accent" style="min-width: 100px;">Hours</div>
-                <div>Mon — Fri: 9:00 — 17:00<br>Sat: 10:00 — 14:00 (Appt Only)</div>
+              <div class="flex u-items-start">
+                <div class="text-accent u-minw-100">Hours</div>
+                <div>Mon - Fri: 9:00 - 17:00<br>Sat: 10:00 - 14:00 (Appt Only)</div>
               </div>
             </div>
 
-            <!-- Map Placeholder -->
-            <div
-              style="margin-top: var(--space-2xl); height: 300px; background-color: var(--color-bg-secondary); border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-              <span class="text-accent" style="opacity: 0.5;">[ Google Maps Placeholder ]</span>
-              <!-- Decorative overlay -->
-              <div
-                style="position: absolute; top:0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(28, 20, 16, 0.05), transparent);">
-              </div>
+            <div class="c-map-placeholder">
+              <span class="text-accent c-map-placeholder__caption">[ Google Maps Placeholder ]</span>
+              <div class="c-map-placeholder__overlay"></div>
             </div>
           </div>
         </div>
@@ -122,11 +89,9 @@
     </section>
   </main>
 
-  <!-- ============================================================
-         COMPONENT: Footer
-         ============================================================ -->
   <footer id="footer-placeholder" class="c-footer"></footer>
-
 </body>
 
 </html>
+
+
