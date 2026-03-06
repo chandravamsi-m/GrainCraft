@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — GrainCraft Studio</title>
+  <meta name="description"
+    content="Explore our collection of handcrafted, bespoke furniture pieces. From dining tables to signature seating.">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <!-- JS Modules -->
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/nav.js"></script>
+  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/animations.js"></script>
+  <script src="../assets/js/portfolio.js" defer></script>
+  <script src="../assets/js/main.js" type="module" defer></script>
+</head>
+
+<body>
+
+  <!-- ============================================================
+         COMPONENT: Navigation
+         ============================================================ -->
+  <nav id="navbar-placeholder" class="c-navbar"></nav>
+
+  <main>
+    <!-- ============================================================
+             SECTION: Page Header
+             ============================================================ -->
+    <section class="section bg-secondary"
+      style="padding-top: calc(var(--header-height) + var(--space-3xl)); text-align: center;">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">The Collection</span>
+          <h1>Signature Works</h1>
+          <p style="max-width: 600px; margin: 0 auto var(--space-xl);">A curated selection of commissions and studio
+            pieces, each speaking to the unique character of the wood and the vision of the client.</p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="c-filter reveal"
+          style="display: flex; justify-content: center; gap: var(--space-md); flex-wrap: wrap;">
+          <button class="btn btn-outline c-filter__btn is-active" data-filter="all">All Pieces</button>
+          <button class="btn btn-outline c-filter__btn" data-filter="tables">Tables</button>
+          <button class="btn btn-outline c-filter__btn" data-filter="seating">Seating</button>
+          <button class="btn btn-outline c-filter__btn" data-filter="storage">Storage</button>
+          <button class="btn btn-outline c-filter__btn" data-filter="custom">Custom</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+             SECTION: Portfolio Grid
+             ============================================================ -->
+    <section class="section">
+      <div class="container">
+        <div class="c-portfolio-grid">
+          <!-- Tables -->
+          <div class="c-portfolio-card c-portfolio-card--large reveal" data-category="tables">
+            <img src="../assets/images/portfolio/table_large.png" alt="White Oak Dining Table"
+              class="c-portfolio-card__img">
+            <div class="c-portfolio-card__overlay">
+              <h3 class="c-portfolio-card__title">White Oak Dining Table</h3>
+              <span class="c-portfolio-card__meta">White Oak — 2023</span>
+            </div>
+          </div>
+
+          <!-- Seating -->
+          <div class="c-portfolio-card reveal" data-category="seating">
+            <img src="../assets/images/portfolio/credenza.png" alt="Walnut Lounge Chair" class="c-portfolio-card__img">
+            <div class="c-portfolio-card__overlay">
+              <h3 class="c-portfolio-card__title">Walnut Credenza</h3>
+              <span class="c-portfolio-card__meta">Black Walnut — 2024</span>
+            </div>
+          </div>
+
+          <!-- Storage -->
+          <div class="c-portfolio-card reveal" data-category="storage">
+            <img src="../assets/images/portfolio/credenza.png" alt="Cherry Storage" class="c-portfolio-card__img">
+            <div class="c-portfolio-card__overlay">
+              <h3 class="c-portfolio-card__title">Cherry Console</h3>
+              <span class="c-portfolio-card__meta">Wild Cherry — 2022</span>
+            </div>
+          </div>
+
+          <!-- Seating -->
+          <div class="c-portfolio-card c-portfolio-card--large reveal" data-category="seating">
+            <img src="../assets/images/portfolio/ash_bench.png" alt="Ashwood Bench" class="c-portfolio-card__img">
+            <div class="c-portfolio-card__overlay">
+              <h3 class="c-portfolio-card__title">Ashwood Bench</h3>
+              <span class="c-portfolio-card__meta">Olive Ash — 2023</span>
+            </div>
+          </div>
+
+          <!-- Tables -->
+          <div class="c-portfolio-card c-portfolio-card--wide reveal" data-category="tables">
+            <img src="../assets/images/portfolio/bedside_resin.png" alt="River Table" class="c-portfolio-card__img">
+            <div class="c-portfolio-card__overlay">
+              <h3 class="c-portfolio-card__title">River Bedside Table</h3>
+              <span class="c-portfolio-card__meta">Cherry & Resin — 2024</span>
+            </div>
+          </div>
+
+          <!-- Custom -->
+          <div class="c-portfolio-card reveal" data-category="custom">
+            <img src="../assets/images/materials/oak.png" alt="Custom Wood Wall" class="c-portfolio-card__img">
+            <div class="c-portfolio-card__overlay">
+              <h3 class="c-portfolio-card__title">Accent Wall Paneling</h3>
+              <span class="c-portfolio-card__meta">Mixed Hardwoods — 2023</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+             SECTION: Final CTA
+             ============================================================ -->
+    <section class="section bg-surface reveal" style="text-align: center;">
+      <div class="container">
+        <h2>Have a specific project in mind?</h2>
+        <p>We specialize in turning unique visions into tangible heirlooms.</p>
+        <div style="margin-top: var(--space-lg);">
+          <a href="quote.html" class="btn btn-primary">Start a Custom Project</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+         COMPONENT: Footer
+         ============================================================ -->
+  <footer id="footer-placeholder" class="c-footer"></footer>
+
+</body>
+
+</html>

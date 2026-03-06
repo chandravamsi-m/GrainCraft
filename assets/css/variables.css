@@ -1,0 +1,64 @@
+:root {
+  /* Colors - Light Mode (Default) */
+  --color-bg-primary: #F5F0E8;    /* warm cream */
+  --color-bg-secondary: #EDE7D9;  /* linen */
+  --color-text-primary: #1C1410;  /* near black, warm */
+  --color-text-secondary: #6B5D4F; /* warm grey-brown */
+  --color-accent: #8B4A1C;         /* deep burnt sienna */
+  --color-accent-hover: #6B3614;   /* dark mahogany */
+  --color-border: #D4C9B8;        /* warm grey */
+  --color-surface: #FFFFFF;       /* pure white */
+
+  /* Shadows & Elevations */
+  --shadow-sm: 0 2px 4px rgba(28, 20, 16, 0.05);
+  --shadow-md: 0 4px 8px rgba(28, 20, 16, 0.08);
+  --shadow-lg: 0 12px 24px rgba(28, 20, 16, 0.12);
+
+  /* Spacing */
+  --space-unit: 1rem;
+  --space-3xs: calc(var(--space-unit) * 0.25);
+  --space-2xs: calc(var(--space-unit) * 0.5);
+  --space-xs: calc(var(--space-unit) * 0.75);
+  --space-sm: var(--space-unit);
+  --space-md: calc(var(--space-unit) * 1.5);
+  --space-lg: calc(var(--space-unit) * 2);
+  --space-xl: calc(var(--space-unit) * 3);
+  --space-2xl: calc(var(--space-unit) * 4);
+  --space-3xl: calc(var(--space-unit) * 6);
+
+  /* Radius */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  /* Typography */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-accent: 'Outfit', sans-serif; /* Using Outfit for accents as well for modern clarity */
+
+  /* Layout */
+  --max-width: 1440px;
+  --container-padding: 2rem;
+  --header-height: 80px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] {
+  --color-bg-primary: #1A1612;    /* deep charcoal brown */
+  --color-bg-secondary: #221E19;  /* dark walnut */
+  --color-text-primary: #F0EAE0;  /* warm off-white */
+  --color-text-secondary: #9C8E80; /* muted tan */
+  --color-accent: #C47A3A;         /* amber gold */
+  --color-accent-hover: #E09050;   /* lighter amber */
+  --color-border: #3A322A;        /* dark border */
+  --color-surface: #2A2420;       /* dark card */
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.4);
+}

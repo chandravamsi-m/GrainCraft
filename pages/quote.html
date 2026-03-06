@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Quote — GrainCraft Studio</title>
+  <meta name="description"
+    content="Start your custom furniture journey. Our multi-step quote form helps us understand your vision, dimensions, and material preferences.">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <!-- JS Modules -->
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/nav.js"></script>
+  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/animations.js"></script>
+  <script src="../assets/js/form.js" defer></script>
+  <script src="../assets/js/main.js" type="module" defer></script>
+</head>
+
+<body class="bg-secondary">
+
+  <!-- ============================================================
+         COMPONENT: Navigation
+         ============================================================ -->
+  <nav id="navbar-placeholder" class="c-navbar"></nav>
+
+  <main>
+    <section class="section" style="padding-top: calc(var(--header-height) + var(--space-2xl));">
+      <div class="container" style="max-width: 700px;">
+
+        <div class="c-quote-container bg-surface"
+          style="padding: var(--space-2xl); border: 1px solid var(--color-border); border-radius: var(--radius-md);">
+
+          <!-- Progress Bar -->
+          <div class="c-progress-bar"
+            style="height: 4px; background: var(--color-bg-secondary); margin-bottom: var(--space-xl); position: relative;">
+            <div id="progress-fill"
+              style="position: absolute; top:0; left:0; height: 100%; background: var(--color-accent); width: 25%; transition: width 0.4s ease;">
+            </div>
+          </div>
+
+          <form id="quote-form" class="stack" style="gap: var(--space-xl);">
+
+            <!-- Step 1: Project Type -->
+            <div class="form-step active" data-step="1">
+              <span class="eyebrow" style="margin-bottom: var(--space-xs); display: block;">Step 01 / 04</span>
+              <h2>What are we building?</h2>
+              <p style="margin-bottom: var(--space-lg);">Select the general category of your project.</p>
+
+              <div class="grid grid-2" style="gap: var(--space-md);">
+                <label class="c-option-card">
+                  <input type="radio" name="project_type" value="table" required>
+                  <div class="c-option-card__content">
+                    <h3>Table</h3>
+                    <span>Dining, Coffee, Side</span>
+                  </div>
+                </label>
+                <label class="c-option-card">
+                  <input type="radio" name="project_type" value="storage">
+                  <div class="c-option-card__content">
+                    <h3>Storage</h3>
+                    <span>Credenza, Shelving</span>
+                  </div>
+                </label>
+                <label class="c-option-card">
+                  <input type="radio" name="project_type" value="seating">
+                  <div class="c-option-card__content">
+                    <h3>Seating</h3>
+                    <span>Bench, Chair, Stool</span>
+                  </div>
+                </label>
+                <label class="c-option-card">
+                  <input type="radio" name="project_type" value="other">
+                  <div class="c-option-card__content">
+                    <h3>Other</h3>
+                    <span>Custom installation</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 2: Details & Dimensions -->
+            <div class="form-step" data-step="2" style="display: none;">
+              <span class="eyebrow" style="margin-bottom: var(--space-xs); display: block;">Step 02 / 04</span>
+              <h2>Tell us more</h2>
+              <p style="margin-bottom: var(--space-lg);">Dimensions help us estimate material costs.</p>
+
+              <div class="stack" style="gap: var(--space-md);">
+                <div class="stack" style="gap: var(--space-3xs);">
+                  <label for="dimensions" class="text-accent" style="font-size: 0.75rem;">Approx. Dimensions (LxWxH in
+                    inches)</label>
+                  <input type="text" id="dimensions" name="dimensions" placeholder="e.g. 72 x 36 x 30"
+                    style="padding: 1rem; border: 1px solid var(--color-border); background: var(--color-bg-primary); color: var(--color-text-primary);">
+                </div>
+                <div class="stack" style="gap: var(--space-3xs);">
+                  <label for="wood_preference" class="text-accent" style="font-size: 0.75rem;">Preferred
+                    Material</label>
+                  <select id="wood_preference" name="wood_preference"
+                    style="padding: 1rem; border: 1px solid var(--color-border); background: var(--color-bg-primary); color: var(--color-text-primary);">
+                    <option value="not-sure">Not sure yet - Let's discuss</option>
+                    <option value="white-oak">White Oak</option>
+                    <option value="black-walnut">Black Walnut</option>
+                    <option value="cherry">Wild Cherry</option>
+                    <option value="reclaimed">Reclaimed Heritage Timber</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Timeline & Budget -->
+            <div class="form-step" data-step="3" style="display: none;">
+              <span class="eyebrow" style="margin-bottom: var(--space-xs); display: block;">Step 03 / 04</span>
+              <h2>Timeline & Budget</h2>
+              <p style="margin-bottom: var(--space-lg);">Quality takes time. Let us know your expectations.</p>
+
+              <div class="stack" style="gap: var(--space-md);">
+                <div class="stack" style="gap: var(--space-3xs);">
+                  <label for="budget" class="text-accent" style="font-size: 0.75rem;">Expected Budget Range</label>
+                  <select id="budget" name="budget"
+                    style="padding: 1rem; border: 1px solid var(--color-border); background: var(--color-bg-primary); color: var(--color-text-primary);">
+                    <option value="under-1k">Under $1,000</option>
+                    <option value="1k-3k">$1,000 - $3,000</option>
+                    <option value="3k-5k">$3,000 - $5,000</option>
+                    <option value="5k-plus">$5,000+</option>
+                  </select>
+                </div>
+                <div class="stack" style="gap: var(--space-3xs);">
+                  <label for="deadline" class="text-accent" style="font-size: 0.75rem;">Target Deadline (if any)</label>
+                  <input type="text" id="deadline" name="deadline" placeholder="e.g. Summer 2026"
+                    style="padding: 1rem; border: 1px solid var(--color-border); background: var(--color-bg-primary); color: var(--color-text-primary);">
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4: Contact Info -->
+            <div class="form-step" data-step="4" style="display: none;">
+              <span class="eyebrow" style="margin-bottom: var(--space-xs); display: block;">Step 04 / 04</span>
+              <h2>Your Details</h2>
+              <p style="margin-bottom: var(--space-lg);">Almost there. Where should we send the proposal?</p>
+
+              <div class="stack" style="gap: var(--space-md);">
+                <div class="stack" style="gap: var(--space-3xs);">
+                  <label for="client_name" class="text-accent" style="font-size: 0.75rem;">Full Name</label>
+                  <input type="text" id="client_name" name="client_name" placeholder="John Doe"
+                    style="padding: 1rem; border: 1px solid var(--color-border); background: var(--color-bg-primary); color: var(--color-text-primary);"
+                    required>
+                </div>
+                <div class="stack" style="gap: var(--space-3xs);">
+                  <label for="client_email" class="text-accent" style="font-size: 0.75rem;">Email Address</label>
+                  <input type="email" id="client_email" name="client_email" placeholder="john@example.com"
+                    style="padding: 1rem; border: 1px solid var(--color-border); background: var(--color-bg-primary); color: var(--color-text-primary);"
+                    required>
+                </div>
+                <div class="stack" style="gap: var(--space-3xs);">
+                  <label for="zip_code" class="text-accent" style="font-size: 0.75rem;">Zip Code (for shipping
+                    estimate)</label>
+                  <input type="text" id="zip_code" name="zip_code" placeholder="97201"
+                    style="padding: 1rem; border: 1px solid var(--color-border); background: var(--color-bg-primary); color: var(--color-text-primary);">
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Navigation -->
+            <div class="c-form-nav" style="display: flex; justify-content: space-between; margin-top: var(--space-xl);">
+              <button type="button" id="prev-btn" class="btn btn-outline" style="visibility: hidden;">Previous</button>
+              <button type="button" id="next-btn" class="btn btn-primary">Next Step</button>
+              <button type="submit" id="submit-btn" class="btn btn-primary" style="display: none;">Submit
+                Request</button>
+            </div>
+
+          </form>
+        </div>
+
+        <div class="text-center" style="margin-top: var(--space-xl); opacity: 0.5; font-size: 0.875rem;">
+          <p>Protected by the hand that holds the grain. No spam, ever.</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer-placeholder" class="c-footer"></footer>
+
+  <!-- Basic styles for option cards -->
+  <style>
+    .c-option-card {
+      display: block;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .c-option-card input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .c-option-card__content {
+      padding: var(--space-lg);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-primary);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .c-option-card input:checked+.c-option-card__content {
+      border-color: var(--color-accent);
+      background: var(--color-bg-secondary);
+    }
+
+    .c-option-card h3 {
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+
+    .c-option-card span {
+      font-size: 0.75rem;
+      color: var(--color-text-secondary);
+    }
+  </style>
+
+</body>
+
+</html>
