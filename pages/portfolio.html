@@ -113,7 +113,106 @@
       </div>
     </section>
 
-    <!-- ... (process section same) ... -->
+    <section id="process" class="section bg-secondary">
+      <div class="container">
+        <div class="text-center reveal u-mb-2xl">
+          <span class="eyebrow">The Journey</span>
+          <h2>How a Commission Lives</h2>
+        </div>
+        <div class="grid grid-3 u-gap-xl">
+          <article class="c-process-card reveal reveal-delay-1">
+            <div class="c-process-card__media">
+              <img src="../assets/images/artisan_sketching_walnut_plan.png"
+                alt="Artisan sketching a detailed walnut furniture plan" class="img-responsive">
+              <span class="c-process-card__step">01</span>
+            </div>
+            <div class="c-process-card__body">
+              <h3>Consultation</h3>
+              <p class="text-soft">We start with a conversation about space, use, and the specific timber that will best
+                serve the design.</p>
+            </div>
+          </article>
+          <article class="c-process-card reveal reveal-delay-2">
+            <div class="c-process-card__media">
+              <img src="../assets/images/maker_hands_chisel_1772797359182.png" alt="Artisan using a chisel on wood"
+                class="img-responsive">
+              <span class="c-process-card__step">02</span>
+            </div>
+            <div class="c-process-card__body">
+              <h3>Fabrication</h3>
+              <p class="text-soft">Traditional joinery is cut by hand. We provide photo updates as your piece takes
+                physical form in the studio.</p>
+            </div>
+          </article>
+          <article class="c-process-card reveal reveal-delay-3">
+            <div class="c-process-card__media">
+              <img src="../assets/images/walnut_credenza_detail_1772776131847.png" alt="Finished furniture detail"
+                class="img-responsive">
+              <span class="c-process-card__step">03</span>
+            </div>
+            <div class="c-process-card__body">
+              <h3>Character</h3>
+              <p class="text-soft">The final finish is hand-rubbed oil and wax, designed to age gracefully and be
+                maintained for generations.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="shop" class="section bg-surface">
+      <div class="container">
+        <div class="flex-between reveal u-mb-xl">
+          <div>
+            <span class="eyebrow">Studio Editions</span>
+            <h2>Small Home Goods</h2>
+          </div>
+          <p class="text-soft u-max-w-400">Smaller objects crafted from the same premium offcuts of our major
+            commissions.</p>
+        </div>
+        <div class="grid grid-3 u-gap-xl">
+          <article class="c-product-card reveal reveal-delay-1">
+            <div class="c-product-card__media">
+              <img src="../assets/images/wooden_serving_board_detail.png" alt="Handcrafted walnut serving board"
+                class="img-responsive">
+            </div>
+            <div class="c-product-card__body">
+              <div class="flex-between u-mb-3xs">
+                <h3>Heritage Board</h3>
+                <span class="text-accent">$185</span>
+              </div>
+              <p class="text-soft small">Black Walnut / Hand-rubbed Oil</p>
+            </div>
+          </article>
+          <article class="c-product-card reveal reveal-delay-2">
+            <div class="c-product-card__media">
+              <img src="../assets/images/artisan_wooden_stool_minimalist.png" alt="Small artisan stool"
+                class="img-responsive">
+            </div>
+            <div class="c-product-card__body">
+              <div class="flex-between u-mb-3xs">
+                <h3>Studio Stool No.1</h3>
+                <span class="text-accent">$420</span>
+              </div>
+              <p class="text-soft small">White Oak / Wedged Joinery</p>
+            </div>
+          </article>
+          <article class="c-product-card reveal reveal-delay-3">
+            <div class="c-product-card__media">
+              <img src="../assets/images/premium_studio_editions_still_life.png"
+                alt="Still life of premium studio home goods" class="img-responsive">
+            </div>
+            <div class="c-product-card__body">
+              <div class="flex-between u-mb-3xs">
+                <h3>The Maker's Set</h3>
+                <span class="text-accent">$580</span>
+              </div>
+              <p class="text-soft small">Limited Bundle / Seasonal Selection</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <section id="materials" class="section">
       <div class="container">
@@ -130,6 +229,40 @@
             <p class="text-soft">Texture, tone shift, and sheen are tested under daylight and interior lighting to avoid
               surprises after installation.</p>
             <a href="quote.html" class="btn btn-primary">Start Your Brief</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-secondary">
+      <div class="container">
+        <div class="grid grid-2 u-gap-3xl items-center">
+          <div class="reveal">
+            <span class="eyebrow">Start a Conversation</span>
+            <h2>Ready to bring a vision to life?</h2>
+            <p class="text-soft">Whether it's a studio edition or a full-scale residential commission, every project
+              starts with a single note. Share your early thoughts below.</p>
+            <div class="u-mt-lg">
+              <a href="quote.html" class="btn btn-primary">Open Detailed Quote Form</a>
+            </div>
+          </div>
+          <div class="c-card-panel reveal reveal-delay-1">
+            <form id="quick-inquiry" class="stack u-gap-md">
+              <div class="stack u-gap-3xs">
+                <label for="name" class="text-accent u-label">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Elias Thorne" required>
+              </div>
+              <div class="stack u-gap-3xs">
+                <label for="email" class="text-accent u-label">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="elias@example.com" required>
+              </div>
+              <div class="stack u-gap-3xs">
+                <label for="vision" class="text-accent u-label">Project Vision</label>
+                <textarea id="vision" name="vision" placeholder="Tell us about the piece you're imagining..." rows="4"
+                  required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
           </div>
         </div>
       </div>

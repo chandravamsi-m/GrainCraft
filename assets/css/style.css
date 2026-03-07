@@ -187,6 +187,11 @@ body {
     padding-top: var(--space-xl);
     padding-bottom: var(--space-xl);
   }
+
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
 }
 
 .grid {
@@ -304,33 +309,35 @@ img {
 }
 
 /* Hero Overlay State (Initial - Only for Hero Pages) */
-.c-navbar--hero:not(.is-scrolled) {
+.c-navbar--hero:not(.is-scrolled):not(.is-mobile-open) {
   color: #FFFFFF;
 }
 
-.c-navbar--hero:not(.is-scrolled) .c-navbar__link,
-.c-navbar--hero:not(.is-scrolled) .c-navbar__logo {
+.c-navbar--hero:not(.is-scrolled):not(.is-mobile-open) .c-navbar__link,
+.c-navbar--hero:not(.is-scrolled):not(.is-mobile-open) .c-navbar__logo {
   color: #FFFFFF;
 }
 
-.c-navbar--hero:not(.is-scrolled) .c-theme-toggle,
-.c-navbar--hero:not(.is-scrolled) .c-dir-toggle,
-.c-navbar--hero:not(.is-scrolled) .mobile-toggle {
+.c-navbar--hero:not(.is-scrolled):not(.is-mobile-open) .c-theme-toggle,
+.c-navbar--hero:not(.is-scrolled):not(.is-mobile-open) .c-dir-toggle,
+.c-navbar--hero:not(.is-scrolled):not(.is-mobile-open) .mobile-toggle {
   color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .c-navbar--hero:not(.is-scrolled) .c-dir-toggle {
-  border-color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .c-navbar--hero:not(.is-scrolled) .c-navbar__link::after {
   background-color: #FFFFFF;
 }
 
-.c-navbar.is-scrolled {
-  height: 70px; /* Slimmer on scroll */
-  background-color: rgba(245, 240, 232, 0.95);
+.c-navbar.is-scrolled,
+.c-navbar.is-mobile-open {
+  height: 64px;
+  background-color: var(--color-surface);
   backdrop-filter: blur(20px);
   border-bottom-color: var(--color-border);
   box-shadow: var(--shadow-sm);
@@ -2122,11 +2129,15 @@ p {
 }
 
 @media (max-width: 1024px) {
-  .home-collection-grid,
+  .home-collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .home-story-split,
   .portfolio-lead-grid,
   .materials-lab,
-  .maker-manifesto {
+  .maker-manifesto,
+  .quote-layout {
     grid-template-columns: 1fr;
   }
 
@@ -2156,10 +2167,13 @@ p {
 }
 
 @media (max-width: 640px) {
+  .home-collection-grid,
   .home-swatch-grid,
   .process-inline,
   .maker-diary,
-  .maker-values {
+  .maker-values,
+  .grid-2,
+  .grid-3 {
     grid-template-columns: 1fr;
   }
 
@@ -2248,6 +2262,10 @@ p {
 }
 
 @media (max-width: 1024px) {
+  .c-navbar {
+    height: 64px;
+  }
+
   .mobile-toggle {
     display: flex;
   }
@@ -2255,16 +2273,21 @@ p {
   .c-navbar__menu {
     display: none;
     position: absolute;
-    top: calc(100% + 10px);
-    right: var(--container-padding);
-    width: min(340px, calc(100vw - (var(--container-padding) * 2)));
+    top: 100%;
+    right: 0;
+    width: 100%;
     background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-lg) var(--container-padding);
     box-shadow: var(--shadow-lg);
     flex-direction: column;
     gap: var(--space-sm);
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .c-navbar__menu.is-open {
@@ -2272,7 +2295,14 @@ p {
   }
 
   .c-navbar__link {
-    padding: 0.75rem 0;
+    padding: 0.5rem var(--space-sm);
+    color: var(--color-text-primary) !important;
+  }
+
+  .c-navbar__arrow {
+    border-right-color: var(--color-text-primary);
+    border-bottom-color: var(--color-text-primary);
+    color: var(--color-text-primary) !important;
   }
 }
 
@@ -2342,6 +2372,13 @@ textarea:focus-visible {
 .c-portfolio-card {
   border-radius: var(--radius-lg);
   border-color: rgba(156, 142, 128, 0.3);
+  overflow: hidden;
+}
+
+.c-product-card img,
+.c-portfolio-card img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
 }
 
 .c-process-card,
@@ -2353,6 +2390,34 @@ textarea:focus-visible {
 .c-process-card:hover,
 .c-product-card:hover {
   transform: translateY(-7px);
+}
+
+.c-process-card__media,
+.c-product-card__media {
+  position: relative;
+  overflow: hidden;
+}
+
+.c-process-card__step {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1;
+}
+
+.c-process-card__body,
+.c-product-card__body {
+  padding: var(--space-lg);
+  background: var(--color-surface);
+}
+
+.c-product-card__body h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0;
 }
 
 .c-portfolio-card__overlay {

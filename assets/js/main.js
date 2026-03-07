@@ -90,8 +90,14 @@ function initNav() {
   if (mobileToggle && navMenu) {
     mobileToggle.onclick = (e) => {
       e.preventDefault();
-      navMenu.classList.toggle('is-open');
+      const isOpen = navMenu.classList.toggle('is-open');
       mobileToggle.classList.toggle('is-active');
+      
+      if (isOpen) {
+        navbar.classList.add('is-mobile-open');
+      } else if (window.scrollY <= 50) {
+        navbar.classList.remove('is-mobile-open');
+      }
     };
   }
 
