@@ -1,6 +1,6 @@
 @import url('dark-mode.css');
 @import url('rtl.css');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Outfit:wght@100..900&display=swap&display=swap');
 
 /* ============================================================
    GrainCraft - Consolidated Stylesheet
@@ -300,12 +300,20 @@ img {
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--header-height);
+  height: 80px;
   display: flex;
   align-items: center;
   z-index: 1000;
-  transition: all var(--transition-slow);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   border-bottom: 1px solid transparent;
+}
+
+#navbar-placeholder {
+  min-height: 80px;
+}
+
+#footer-placeholder {
+  min-height: 400px;
 }
 
 /* Hero Overlay State (Initial - Only for Hero Pages) */

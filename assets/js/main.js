@@ -332,6 +332,16 @@ function initQuoteForm() {
   updateForm();
 }
 
+function getRelativeRoot() {
+  const path = window.location.pathname;
+  // If we are in the /pages/ directory, we need to go up one level.
+  // This is more robust than simple string matching as it handles various deployment URL patterns.
+  if (path.includes('/pages/')) {
+    return '../';
+  }
+  return '';
+}
+
 async function loadComponent(id, file) {
   const placeholder = document.getElementById(id);
   if (!placeholder) return;
@@ -341,25 +351,31 @@ async function loadComponent(id, file) {
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
     let html = await response.text();
-    const isSubpage = window.location.pathname.includes('/pages/');
+    const rootPath = getRelativeRoot();
 
-    if (isSubpage) {
-      html = html.replace(/href="(?!http|#|mailto|tel)([^"]*)"/g, 'href="../$1"');
-      html = html.replace(/src="(?!http)([^"]*)"/g, 'src="../$1"');
+    // If we are on a subpage, we need to rebase the links in the component
+    if (rootPath) {
+      // Rebase href and src that don't start with http, #, mailto, or tel
+      html = html.replace(/(href|src)="(?!(http|#|mailto|tel))([^"]*)"/g, `$1="${rootPath}$3"`);
     }
 
     placeholder.innerHTML = html;
 
-    const currentFileName = window.location.pathname.split('/').pop() || 'index.html';
+    // Apply active class based on current filename
+    const pathParts = window.location.pathname.split('/');
+    const currentFileName = pathParts[pathParts.length - 1] || 'index.html';
+    
     placeholder.querySelectorAll('a').forEach((link) => {
       const href = link.getAttribute('href') || '';
-      const linkFileName = href.split('/').pop().split('?')[0].split('#')[0];
+      const linkParts = href.split('/');
+      const linkFileName = linkParts[linkParts.length - 1].split('?')[0].split('#')[0];
+      
       if (linkFileName === currentFileName) {
         link.classList.add('is-active');
       }
     });
 
-    // If a dropdown child is active (e.g. Home 2), mark the parent trigger link active too.
+    // Handle dropdown parent active state
     placeholder.querySelectorAll('.c-navbar__dropdown').forEach((dropdown) => {
       const hasActiveChild = dropdown.querySelector('.c-navbar__dropdown-menu a.is-active');
       const parentLink = dropdown.querySelector('.c-navbar__link');
@@ -373,8 +389,8 @@ async function loadComponent(id, file) {
 }
 
 async function initComponents() {
-  const isSubpage = window.location.pathname.includes('/pages/');
-  const componentPath = isSubpage ? '../assets/components/' : 'assets/components/';
+  const rootPath = getRelativeRoot();
+  const componentPath = `${rootPath}assets/components/`;
 
   await Promise.all([
     loadComponent('navbar-placeholder', `${componentPath}navbar.html`),
