@@ -1,0 +1,46 @@
+/* ============================================================
+   GrainCraft - RTL (Right-to-Left) Overrides
+   Layout adjustments for RTL compatibility.
+   ============================================================ */
+
+html[dir="rtl"] .c-navbar__dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] .c-navbar__arrow {
+  margin-left: 0;
+  margin-right: 6px;
+}
+
+html[dir="rtl"] .c-timeline::before {
+  left: auto;
+  right: 20px;
+}
+
+html[dir="rtl"] .c-timeline__item {
+  padding-left: 0;
+  padding-right: 60px;
+}
+
+html[dir="rtl"] .c-timeline__dot {
+  left: auto;
+  right: 11px;
+}
+
+html[dir="rtl"] .timeline-compact .c-timeline__item {
+  padding-left: 0;
+  padding-right: 40px;
+}
+
+html[dir="rtl"] .timeline-compact .c-timeline__dot {
+  left: auto;
+  right: 0;
+}
+
+@media (max-width: 1024px) {
+  html[dir="rtl"] .c-navbar__menu {
+    right: auto;
+    left: var(--container-padding);
+  }
+}
