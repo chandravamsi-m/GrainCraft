@@ -21,7 +21,9 @@
 
 function updateToggleIcon(el, theme) {
   if (!el) return;
-  el.classList.toggle('is-dark', theme === 'dark');
+  // If theme is dark, show sun (is-dark = false)
+  // If theme is light, show moon (is-dark = true)
+  el.classList.toggle('is-dark', theme === 'light');
 }
 
 function initTheme() {
@@ -49,8 +51,9 @@ function initTheme() {
 
 function updateDirToggleLabel(el, dir) {
   if (!el) return;
-  el.textContent = dir.toUpperCase();
-  el.setAttribute('aria-label', `Switch to ${dir === 'rtl' ? 'LTR' : 'RTL'} layout`);
+  const nextDir = dir === 'rtl' ? 'ltr' : 'rtl';
+  el.textContent = nextDir.toUpperCase();
+  el.setAttribute('aria-label', `Switch to ${nextDir.toUpperCase()} layout`);
 }
 
 function initDirectionToggle() {
