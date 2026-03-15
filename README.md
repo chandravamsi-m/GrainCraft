@@ -353,7 +353,7 @@ graincraft/
 │
 ├── assets/
 │   ├── css/
-│   │   ├── style.css           # Master stylesheet — imports all partials via @import
+│   │   ├── dark-mode.css       # Dark mode overrides via [data-theme="dark"]
 │   │   ├── variables.css       # All CSS custom properties (colors, fonts, spacing)
 │   │   ├── typography.css      # Font imports, scale, heading styles
 │   │   ├── components.css      # All reusable UI component styles
@@ -551,7 +551,7 @@ Include in `<head>` or just before `</body>`:
 
 ### CSS/JS Performance
 
-- CSS: Load `style.css` in `<head>`, non-critical CSS deferred
+- CSS: Load `style.css` in `<head>`; it imports the shared base, dark mode, and RTL styles used across the template
 - JS: All scripts load with `defer` attribute — no render-blocking scripts
 - No unused CSS — each page imports only what it needs
 - Google Fonts: loaded with `rel="preconnect"` and `display=swap`
@@ -575,8 +575,8 @@ Include in `<head>` or just before `</body>`:
 
 ### Setup & Initialization
 
-- No build tool required — pure HTML/CSS/JS
-- `style.css` uses `@import` to pull in all partial CSS files in order
+- No build tool required — pure HTML/CSS/JS with Tailwind loaded from CDN
+- `style.css` is the shared visual layer for all pages, and `main.js` handles interactive behavior
 - `main.js` uses ES6 module imports (`type="module"`) — ensure server context or use a local dev server (e.g., VS Code Live Server, `npx serve`)
 - All JS files follow module pattern — functions not exposed to global scope
 

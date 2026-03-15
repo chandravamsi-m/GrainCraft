@@ -1,9 +1,10 @@
 /* ============================================================
-   GrainCraft - Dark Mode Overrides
-   Standardized variables for the dark theme.
+   GrainCraft - Dark Mode Overrides (theme only)
+   CSS variables and utility mappings for dark theme.
    ============================================================ */
 
-html[data-theme="dark"] {
+html[data-theme="dark"],
+html.dark {
   --color-bg-primary: var(--color-neutral-900);
   --color-bg-secondary: #221E19;
   --color-text-primary: #F0EAE0;
@@ -18,7 +19,48 @@ html[data-theme="dark"] {
   --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.6);
 }
 
-/* Specific component overrides for dark mode if needed */
-[data-theme="dark"] .c-navbar.is-scrolled {
+/* Navbar scrolled state in dark mode */
+html[data-theme="dark"] .c-navbar.is-scrolled,
+html.dark .c-navbar.is-scrolled {
   background-color: rgba(28, 20, 16, 0.78);
+}
+
+/* Map Tailwind utility classes to theme variables when dark (no dark: prefix in markup) */
+html[data-theme="dark"] .bg-neutral-100,
+html[data-theme="dark"] .bg-neutral-200,
+html.dark .bg-neutral-100,
+html.dark .bg-neutral-200 {
+  background-color: var(--color-bg-primary);
+}
+
+html[data-theme="dark"] .bg-neutral-300,
+html.dark .bg-neutral-300 {
+  background-color: var(--color-bg-secondary);
+}
+
+html[data-theme="dark"] .bg-white,
+html.dark .bg-white {
+  background-color: var(--color-surface);
+}
+
+html[data-theme="dark"] .text-neutral-900,
+html[data-theme="dark"] .text-neutral-800,
+html.dark .text-neutral-900,
+html.dark .text-neutral-800 {
+  color: var(--color-text-primary);
+}
+
+html[data-theme="dark"] .text-neutral-600,
+html.dark .text-neutral-600 {
+  color: var(--color-text-secondary);
+}
+
+html[data-theme="dark"] .border-neutral-900,
+html.dark .border-neutral-900 {
+  border-color: var(--color-text-primary);
+}
+
+html[data-theme="dark"] .border-neutral-400,
+html.dark .border-neutral-400 {
+  border-color: var(--color-border);
 }

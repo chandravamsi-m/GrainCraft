@@ -5,33 +5,179 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coming Soon | GrainCraft Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Outfit:wght@100..900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            neutral: {
+              100: '#FAF8F5',
+              200: '#F5F0E8',
+              300: '#EDE7D9',
+              400: '#D4C9B8',
+              500: '#9C8E80',
+              600: '#6B5D4F',
+              700: '#4A4036',
+              800: '#2A2420',
+              900: '#1C1410',
+            },
+            accent: {
+              DEFAULT: '#8B4A1C',
+              hover: '#6B3614',
+            },
+            primary: '#F5F0E8',
+            secondary: '#EDE7D9',
+            surface: '#FFFFFF',
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            body: ['Outfit', 'sans-serif'],
+            accent: ['Outfit', 'sans-serif'],
+          },
+          spacing: {
+            '3xs': '0.25rem',
+            '2xs': '0.5rem',
+            'xs': '0.75rem',
+            'sm': '1rem',
+            'md': '1.5rem',
+            'lg': '2rem',
+            'xl': '3rem',
+            '2xl': '4rem',
+            '3xl': '6rem',
+            '4xl': '8rem',
+          },
+          transitionTimingFunction: {
+            'premium': 'cubic-bezier(0.16, 1, 0.3, 1)',
+          },
+          transitionDuration: {
+            '1200': '1200ms',
+          }
+        }
+      }
+    }
+  </script>
   <script src="../assets/js/main.js" defer></script>
 </head>
 
-<body>
-  <nav id="navbar-placeholder" class="c-navbar"></nav>
+<body class="font-body text-neutral-900 dark:text-neutral-100 bg-neutral-200 dark:bg-neutral-900 antialiased overflow-x-hidden m-0">
+  <nav class="fixed top-0 left-0 w-full z-[1000] border-b border-transparent transition-all duration-300 h-[80px] text-neutral-900 dark:text-white [&.is-scrolled]:bg-white dark:[&.is-scrolled]:bg-neutral-900/95 [&.is-scrolled]:backdrop-blur-[20px] [&.is-scrolled]:shadow-sm [&.is-scrolled]:border-neutral-400 dark:[&.is-scrolled]:border-neutral-600 c-navbar">
+    <div class="container mx-auto px-6 max-w-[1320px] 2xl:max-w-[1440px] flex justify-between items-center h-full c-navbar__container">
+      <a href="../index.html" class="font-display text-2xl font-semibold tracking-[0.05em] uppercase transition-colors hover:text-accent c-navbar__logo">GrainCraft</a>
+      <ul class="hidden lg:flex items-center gap-12 list-none m-0 p-0">
+        <li class="relative group/home flex items-center h-full c-navbar__dropdown">
+          <a href="../index.html" class="c-navbar__link font-accent uppercase text-[0.875rem] tracking-widest py-2 flex items-center transition-colors hover:text-accent">Home <span class="iconify ml-2 transition-transform duration-300 group-hover/home:-rotate-180" data-icon="lucide:chevron-down"></span></a>
+          <div class="c-navbar__dropdown-menu absolute top-full left-0 pt-1 opacity-0 invisible translate-y-1 group-hover/home:opacity-100 group-hover/home:visible group-hover/home:translate-y-0 transition-all duration-300 z-10 w-48">
+            <ul class="bg-white dark:bg-neutral-900 border border-neutral-400 dark:border-neutral-800 shadow-xl list-none m-0 p-2 rounded-sm">
+              <li><a href="../index.html" class="block px-4 py-2 font-accent text-[0.8125rem] tracking-wider uppercase text-neutral-900 dark:text-white transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-accent rounded-sm">Home 1</a></li>
+              <li><a href="home-2.html" class="block px-4 py-2 font-accent text-[0.8125rem] tracking-wider uppercase text-neutral-900 dark:text-white transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-accent rounded-sm">Home 2</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="flex items-center h-full"><a href="portfolio.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">Portfolio</a></li>
+        <li class="flex items-center h-full"><a href="about.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">About</a></li>
+        <li class="flex items-center h-full"><a href="shop.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">Shop</a></li>
+        <li class="flex items-center h-full"><a href="quote.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">Quote</a></li>
+        <li class="flex items-center h-full"><a href="contact.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">Contact</a></li>
+      </ul>
+      <div class="flex items-center gap-4">
+        <button id="theme-toggle" class="p-2 rounded-full transition-colors hover:bg-neutral-300/20 dark:hover:bg-neutral-800/40 text-current flex items-center justify-center w-10 h-10" aria-label="Toggle Dark Mode">
+          <span class="iconify text-xl hidden dark:block" data-icon="lucide:sun"></span>
+          <span class="iconify text-xl block dark:hidden" data-icon="lucide:moon"></span>
+        </button>
+        <button id="dir-toggle" class="min-w-[44px] h-8 border border-current rounded-full font-accent text-[0.625rem] tracking-widest uppercase flex items-center justify-center transition-all bg-white/10 dark:bg-neutral-800/50 hover:bg-white/20 dark:hover:bg-neutral-700/50 gap-1 px-3" aria-label="Toggle Text Direction">
+          <span class="iconify h-4 w-4" data-icon="lucide:languages"></span>
+          <span class="dir-label">LTR</span>
+        </button>
+        <div class="mobile-toggle lg:hidden cursor-pointer p-2 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Open menu">
+          <div class="hamburger w-6 h-[2px] bg-current relative before:content-[''] before:absolute before:w-full before:h-full before:bg-current before:-top-2 after:content-[''] after:absolute after:w-full after:h-full after:bg-current after:top-2 transition-all"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="c-navbar__menu fixed top-[80px] left-0 right-0 bottom-0 bg-white dark:bg-neutral-900 z-[999] overflow-y-auto lg:hidden" aria-hidden="true">
+      <ul class="list-none p-6 pt-12 space-y-2">
+        <li><a href="../index.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Home</a></li>
+        <li><a href="portfolio.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Portfolio</a></li>
+        <li><a href="about.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">About</a></li>
+        <li><a href="shop.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Shop</a></li>
+        <li><a href="quote.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Quote</a></li>
+        <li><a href="contact.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <main>
-    <section class="section bg-secondary page-hero page-hero-center"
-      style="min-height: 80vh; display: flex; align-items: center;">
-      <div class="container">
+    <section class="flex min-h-[85vh] items-center bg-neutral-300 pt-[160px] max-sm:pt-[120px] text-center page-hero page-hero-center">
+      <div class="container mx-auto px-lg">
         <div class="reveal">
-          <span class="eyebrow">Studio Update</span>
-          <h1 class="u-mb-sm">Something new is taking shape.</h1>
-          <p class="u-max-w-600 u-center u-opacity-80 u-leading-18 u-mb-xl">We're currently refining our latest
+          <span class="block font-accent uppercase tracking-[0.2em] text-[0.8125rem] font-semibold text-accent mb-sm">Studio Update</span>
+          <h1 class="font-display font-normal leading-[1.1] text-[clamp(2.5rem,8vw,4.5rem)] mb-md text-neutral-900 dark:text-white">Something new is taking shape.</h1>
+          <p class="font-body text-neutral-600 dark:text-neutral-400 text-[1.15rem] leading-[1.8] max-w-[600px] mx-auto mb-14">We're currently refining our latest
             collection. Sign up to receive an invite to the private viewing.</p>
 
-          <form action="#" class="u-max-w-400 u-center stack u-gap-md">
-            <input type="email" placeholder="Enter your email" required style="text-align: center;">
-            <button type="submit" class="btn btn-primary">Notify Me</button>
+          <form action="#" class="mx-auto flex max-w-[400px] flex-col gap-6">
+            <input type="email" placeholder="Enter your email" required class="w-full px-5 py-4 bg-white dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600 rounded-full focus:outline-none focus:border-accent transition-all font-body text-center shadow-sm focus:shadow-md text-neutral-900 dark:text-white">
+            <button type="submit" class="inline-flex items-center justify-center px-10 py-4 bg-neutral-900 text-white font-accent uppercase tracking-[0.14em] text-[0.8125rem] font-semibold rounded-full transition-all hover:bg-black hover:-translate-y-1 shadow-md hover:shadow-lg">Notify Me</button>
           </form>
         </div>
       </div>
     </section>
   </main>
 
-  <footer id="footer-placeholder" class="c-footer"></footer>
+  <footer class="bg-neutral-300 dark:bg-neutral-800/50 py-8 md:py-12 lg:py-16 border-t border-neutral-400 dark:border-neutral-600">
+    <div class="container mx-auto px-6 max-w-[1320px] 2xl:max-w-[1440px]">
+      <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_2fr] gap-md gap-y-8">
+        <div class="col-span-full md:col-span-1">
+          <a href="../index.html" class="font-display text-2xl font-semibold tracking-widest uppercase mb-4 inline-block hover:text-accent transition-colors text-neutral-900 dark:text-white">GrainCraft</a>
+          <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] leading-relaxed max-w-[300px] max-sm:mx-auto max-sm:text-sm">Handcrafted furniture for slow living. We build pieces that endure for generations, honoring the material and the maker's hand.</p>
+        </div>
+        <div class="space-y-6">
+          <h4 class="font-accent text-[0.875rem] uppercase tracking-[0.2em] text-accent mb-6">Explore</h4>
+          <ul class="list-none p-0 m-0 space-y-2">
+            <li><a href="portfolio.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Portfolio</a></li>
+            <li><a href="portfolio.html#process" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">The Process</a></li>
+            <li><a href="portfolio.html#materials" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Materials</a></li>
+            <li><a href="shop.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Shop</a></li>
+          </ul>
+        </div>
+        <div class="space-y-6">
+          <h4 class="font-accent text-[0.875rem] uppercase tracking-[0.2em] text-accent mb-6">Studio</h4>
+          <ul class="list-none p-0 m-0 space-y-2">
+            <li><a href="about.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Our Story</a></li>
+            <li><a href="contact.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Contact</a></li>
+            <li><a href="quote.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Quote</a></li>
+          </ul>
+        </div>
+        <div class="col-span-full md:col-span-1">
+          <h4 class="font-accent text-[0.875rem] uppercase tracking-[0.2em] text-accent mb-6">Newsletter</h4>
+          <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] leading-relaxed max-w-[300px] max-sm:mx-auto max-sm:text-sm">Join our studio notes for insights into craftsmanship.</p>
+          <form class="flex mt-6 max-sm:max-w-[400px] max-sm:mx-auto max-sm:mt-4 gap-1">
+            <input type="email" class="flex-1 px-3 py-2.5 text-[0.8125rem] rounded-xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600 font-body text-neutral-900 dark:text-white focus:outline-none focus:border-accent transition-colors" placeholder="Your email" required>
+            <button type="submit" class="px-4 py-2.5 text-[0.8125rem] bg-accent text-white font-accent uppercase tracking-wider cursor-pointer transition-colors hover:bg-accent-hover rounded-full">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="mt-6 pt-4 border-t border-neutral-400 dark:border-neutral-600 flex justify-between items-center text-neutral-600 dark:text-neutral-400 text-[0.875rem] max-sm:flex-col max-sm:gap-4 max-sm:text-center max-sm:mt-4 max-sm:pt-3">
+        <p class="max-sm:text-xs">&copy; 2026 GrainCraft Studio. All rights reserved.</p>
+        <div class="flex gap-6 max-sm:gap-4">
+          <a href="#" class="font-body text-neutral-600 dark:text-neutral-400 hover:text-accent transition-colors max-sm:text-xs">Privacy Policy</a>
+          <a href="#" class="font-body text-neutral-600 dark:text-neutral-400 hover:text-accent transition-colors max-sm:text-xs">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>

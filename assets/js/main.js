@@ -21,9 +21,10 @@
 
 function updateToggleIcon(el, theme) {
   if (!el) return;
-  // If theme is dark, show sun (is-dark = false)
-  // If theme is light, show moon (is-dark = true)
-  el.classList.toggle('is-dark', theme === 'light');
+  // If theme is dark, the sun icon is shown via CSS [data-theme='dark']
+  // If theme is light, the moon icon is shown.
+  // We keep the is-dark class for any legacy CSS that might need it.
+  el.classList.toggle('is-dark', theme === 'dark');
 }
 
 function initTheme() {
@@ -32,9 +33,11 @@ function initTheme() {
 
   if (currentTheme) {
     document.documentElement.setAttribute('data-theme', currentTheme);
+    document.documentElement.classList.toggle('dark', currentTheme === 'dark');
     updateToggleIcon(themeToggle, currentTheme);
   } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.toggle('dark', true);
     updateToggleIcon(themeToggle, 'dark');
   }
 
@@ -44,6 +47,7 @@ function initTheme() {
     const theme = document.documentElement.getAttribute('data-theme');
     const targetTheme = theme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', targetTheme);
+    document.documentElement.classList.toggle('dark', targetTheme === 'dark');
     localStorage.setItem('theme', targetTheme);
     updateToggleIcon(themeToggle, targetTheme);
   };
@@ -52,7 +56,12 @@ function initTheme() {
 function updateDirToggleLabel(el, dir) {
   if (!el) return;
   const nextDir = dir === 'rtl' ? 'ltr' : 'rtl';
-  el.textContent = nextDir.toUpperCase();
+  const label = el.querySelector('.dir-label');
+  if (label) {
+    label.textContent = nextDir.toUpperCase();
+  } else {
+    el.textContent = nextDir.toUpperCase();
+  }
   el.setAttribute('aria-label', `Switch to ${nextDir.toUpperCase()} layout`);
 }
 
@@ -179,65 +188,6 @@ function initCounter() {
   counters.forEach((counter) => counterObserver.observe(counter));
 }
 
-function initLightbox() {
-  const triggerImages = document.querySelectorAll('.c-portfolio-card__img, .s-materials__img, [data-lightbox]');
-  if (!triggerImages.length) return;
-
-  let lightbox = document.getElementById('lightbox');
-
-  if (!lightbox) {
-    lightbox = document.createElement('div');
-    lightbox.id = 'lightbox';
-    lightbox.className = 'c-lightbox';
-    lightbox.innerHTML = `
-      <button class="c-lightbox__close" aria-label="Close Lightbox">&times;</button>
-      <div class="c-lightbox__content">
-        <img src="" alt="" class="c-lightbox__img">
-      </div>
-      <div class="c-lightbox__caption"></div>
-    `;
-    document.body.appendChild(lightbox);
-  }
-
-  const lightboxImg = lightbox.querySelector('.c-lightbox__img');
-  const lightboxCaption = lightbox.querySelector('.c-lightbox__caption');
-  const closeBtn = lightbox.querySelector('.c-lightbox__close');
-
-  const openLightbox = (img) => {
-    lightboxImg.src = img.getAttribute('src') || '';
-    lightboxImg.alt = img.getAttribute('alt') || '';
-    lightboxCaption.textContent = img.getAttribute('alt') || '';
-    lightbox.classList.add('is-active');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeLightbox = () => {
-    lightbox.classList.remove('is-active');
-    document.body.style.overflow = '';
-  };
-
-  triggerImages.forEach((img) => {
-    img.style.cursor = 'zoom-in';
-    if (img.dataset.lightboxInit) return;
-    img.addEventListener('click', () => openLightbox(img));
-    img.dataset.lightboxInit = 'true';
-  });
-
-  closeBtn.onclick = closeLightbox;
-  lightbox.onclick = (e) => {
-    if (e.target === lightbox) closeLightbox();
-  };
-
-  if (!document.body.dataset.lightboxEscInit) {
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('is-active')) {
-        closeLightbox();
-      }
-    });
-    document.body.dataset.lightboxEscInit = 'true';
-  }
-}
-
 function initPortfolioFilter() {
   const filterButtons = document.querySelectorAll('.c-filter__btn');
   const portfolioItems = document.querySelectorAll('.c-portfolio-card');
@@ -335,80 +285,12 @@ function initQuoteForm() {
   updateForm();
 }
 
-function getRelativeRoot() {
-  const path = window.location.pathname;
-  // If we are in the /pages/ directory, we need to go up one level.
-  // This is more robust than simple string matching as it handles various deployment URL patterns.
-  if (path.includes('/pages/')) {
-    return '../';
-  }
-  return '';
-}
-
-async function loadComponent(id, file) {
-  const placeholder = document.getElementById(id);
-  if (!placeholder) return;
-
-  try {
-    const response = await fetch(file);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-    let html = await response.text();
-    const rootPath = getRelativeRoot();
-
-    // If we are on a subpage, we need to rebase the links in the component
-    if (rootPath) {
-      // Rebase href and src that don't start with http, #, mailto, or tel
-      html = html.replace(/(href|src)="(?!(http|#|mailto|tel))([^"]*)"/g, `$1="${rootPath}$3"`);
-    }
-
-    placeholder.innerHTML = html;
-
-    // Apply active class based on current filename
-    const pathParts = window.location.pathname.split('/');
-    const currentFileName = pathParts[pathParts.length - 1] || 'index.html';
-    
-    placeholder.querySelectorAll('a').forEach((link) => {
-      const href = link.getAttribute('href') || '';
-      const linkParts = href.split('/');
-      const linkFileName = linkParts[linkParts.length - 1].split('?')[0].split('#')[0];
-      
-      if (linkFileName === currentFileName) {
-        link.classList.add('is-active');
-      }
-    });
-
-    // Handle dropdown parent active state
-    placeholder.querySelectorAll('.c-navbar__dropdown').forEach((dropdown) => {
-      const hasActiveChild = dropdown.querySelector('.c-navbar__dropdown-menu a.is-active');
-      const parentLink = dropdown.querySelector('.c-navbar__link');
-      if (hasActiveChild && parentLink) {
-        parentLink.classList.add('is-active');
-      }
-    });
-  } catch (err) {
-    console.error(`Failed to load component ${file}:`, err);
-  }
-}
-
-async function initComponents() {
-  const rootPath = getRelativeRoot();
-  const componentPath = `${rootPath}assets/components/`;
-
-  await Promise.all([
-    loadComponent('navbar-placeholder', `${componentPath}navbar.html`),
-    loadComponent('footer-placeholder', `${componentPath}footer.html`),
-  ]);
-}
-
-document.addEventListener('DOMContentLoaded', async () => {
-  await initComponents();
+document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initDirectionToggle();
   initNav();
   initAnimations();
   initCounter();
-  initLightbox();
   initPortfolioFilter();
   initQuoteForm();
 });

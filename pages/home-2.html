@@ -8,137 +8,281 @@
   <meta name="description"
     content="A journal view of GrainCraft studio life, values, and current experiments in contemporary woodworking.">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Outfit:wght@100..900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
-
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            neutral: {
+              100: '#FAF8F5',
+              200: '#F5F0E8',
+              300: '#EDE7D9',
+              400: '#D4C9B8',
+              500: '#9C8E80',
+              600: '#6B5D4F',
+              700: '#4A4036',
+              800: '#2A2420',
+              900: '#1C1410',
+            },
+            accent: {
+              DEFAULT: '#8B4A1C',
+              hover: '#6B3614',
+            },
+            primary: '#F5F0E8',
+            secondary: '#EDE7D9',
+            surface: '#FFFFFF',
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            body: ['Outfit', 'sans-serif'],
+            accent: ['Outfit', 'sans-serif'],
+          },
+          spacing: {
+            '3xs': '0.25rem',
+            '2xs': '0.5rem',
+            'xs': '0.75rem',
+            'sm': '1rem',
+            'md': '1.5rem',
+            'lg': '2rem',
+            'xl': '3rem',
+            '2xl': '4rem',
+            '3xl': '6rem',
+            '4xl': '8rem',
+          }
+        }
+      }
+    }
+  </script>
   <script src="../assets/js/main.js" defer></script>
 </head>
 
-<body>
-  <nav id="navbar-placeholder" class="c-navbar c-navbar--hero"></nav>
+<body class="font-body text-neutral-900 dark:text-neutral-100 bg-neutral-200 dark:bg-neutral-900 antialiased overflow-x-hidden m-0">
+  <nav class="fixed top-0 left-0 w-full z-[1000] border-b border-transparent transition-all duration-300 h-[80px] text-white [&.is-scrolled]:bg-white dark:[&.is-scrolled]:bg-neutral-900/95 [&.is-scrolled]:backdrop-blur-[20px] [&.is-scrolled]:shadow-sm [&.is-scrolled]:border-neutral-400 dark:[&.is-scrolled]:border-neutral-600 [&.is-scrolled]:text-neutral-900 dark:[&.is-scrolled]:text-white c-navbar c-navbar--hero">
+    <div class="container mx-auto px-6 max-w-[1320px] 2xl:max-w-[1440px] flex justify-between items-center h-full c-navbar__container">
+      <a href="../index.html" class="font-display text-2xl font-semibold tracking-[0.05em] uppercase transition-colors hover:text-accent c-navbar__logo">GrainCraft</a>
+      <ul class="hidden lg:flex items-center gap-12 list-none m-0 p-0">
+        <li class="relative group/home flex items-center h-full c-navbar__dropdown">
+          <a href="../index.html" class="c-navbar__link font-accent uppercase text-[0.875rem] tracking-widest py-2 flex items-center transition-colors hover:text-accent is-active">Home <span class="iconify ml-2 transition-transform duration-300 group-hover/home:-rotate-180" data-icon="lucide:chevron-down"></span></a>
+          <div class="c-navbar__dropdown-menu absolute top-full left-0 pt-1 opacity-0 invisible translate-y-1 group-hover/home:opacity-100 group-hover/home:visible group-hover/home:translate-y-0 transition-all duration-300 z-10 w-48">
+            <ul class="bg-white dark:bg-neutral-900 border border-neutral-400 dark:border-neutral-800 shadow-xl list-none m-0 p-2 rounded-sm">
+              <li><a href="../index.html" class="block px-4 py-2 font-accent text-[0.8125rem] tracking-wider uppercase text-neutral-900 dark:text-white transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-accent rounded-sm">Home 1</a></li>
+              <li><a href="home-2.html" class="block px-4 py-2 font-accent text-[0.8125rem] tracking-wider uppercase text-neutral-900 dark:text-white transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-accent rounded-sm is-active">Home 2</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="flex items-center h-full"><a href="portfolio.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">Portfolio</a></li>
+        <li class="flex items-center h-full"><a href="about.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">About</a></li>
+        <li class="flex items-center h-full"><a href="shop.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">Shop</a></li>
+        <li class="flex items-center h-full"><a href="quote.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">Quote</a></li>
+        <li class="flex items-center h-full"><a href="contact.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">Contact</a></li>
+      </ul>
+      <div class="flex items-center gap-4">
+        <button id="theme-toggle" class="p-2 rounded-full transition-colors hover:bg-neutral-300/20 dark:hover:bg-neutral-800/40 text-current flex items-center justify-center w-10 h-10" aria-label="Toggle Dark Mode">
+          <span class="iconify text-xl hidden dark:block" data-icon="lucide:sun"></span>
+          <span class="iconify text-xl block dark:hidden" data-icon="lucide:moon"></span>
+        </button>
+        <button id="dir-toggle" class="min-w-[44px] h-8 border border-current rounded-full font-accent text-[0.625rem] tracking-widest uppercase flex items-center justify-center transition-all bg-white/10 dark:bg-neutral-800/50 hover:bg-white/20 dark:hover:bg-neutral-700/50 gap-1 px-3" aria-label="Toggle Text Direction">
+          <span class="iconify h-4 w-4" data-icon="lucide:languages"></span>
+          <span class="dir-label">LTR</span>
+        </button>
+        <div class="mobile-toggle lg:hidden cursor-pointer p-2 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Open menu">
+          <div class="hamburger w-6 h-[2px] bg-current relative before:content-[''] before:absolute before:w-full before:h-full before:bg-current before:-top-2 after:content-[''] after:absolute after:w-full after:h-full after:bg-current after:top-2 transition-all"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="c-navbar__menu fixed top-[80px] left-0 right-0 bottom-0 bg-white dark:bg-neutral-900 z-[999] overflow-y-auto lg:hidden" aria-hidden="true">
+      <ul class="list-none p-6 pt-12 space-y-2">
+        <li><a href="../index.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Home</a></li>
+        <li><a href="portfolio.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Portfolio</a></li>
+        <li><a href="about.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">About</a></li>
+        <li><a href="shop.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Shop</a></li>
+        <li><a href="quote.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Quote</a></li>
+        <li><a href="contact.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <main>
-    <section class="c-hero">
-      <div class="c-hero__bg">
-        <img src="../assets/images/hero_workshop_elite_1772797272151.png" alt="Woodworking workshop" class="ken-burns">
+    <!-- Hero -->
+    <section class="relative min-h-[600px] lg:min-h-[720px] lg:h-screen flex items-center overflow-hidden bg-neutral-900">
+      <div class="absolute inset-0 z-0">
+        <img src="../assets/images/hero_workshop_elite_1772797272151.png" alt="Woodworking workshop" class="w-full h-full object-cover opacity-60 animate-[ken-burns_20s_ease-in-out_infinite]">
       </div>
-      <div class="c-hero__overlay"></div>
-      <div class="container">
-        <div class="c-hero__content reveal">
-          <span class="c-hero__subtitle eyebrow reveal-delay-1">The Artisan</span>
-          <h1 class="c-hero__title reveal-delay-2">Elias Thorne</h1>
-          <p class="c-hero__description reveal-delay-3"
-            style="font-family: var(--font-display); font-style: italic; font-size: 1.5rem; opacity: 0.8;">
+      <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/40 via-black/25 to-black/60"></div>
+      <div class="container mx-auto px-lg relative z-20">
+        <div class="text-white max-w-4xl reveal">
+          <span class="block font-accent uppercase tracking-[0.2em] text-[0.8125rem] font-bold text-white drop-shadow-md mb-4 reveal-delay-1">The Artisan</span>
+          <h1 class="font-display font-normal text-[clamp(3rem,10vw,6rem)] leading-[0.9] mb-12 reveal-delay-2">Elias Thorne</h1>
+          <p class="font-display italic text-[clamp(1.25rem,4vw,1.75rem)] opacity-90 leading-relaxed mb-12 max-w-2xl reveal-delay-3">
             "I don't build furniture to fill space. I build it to hold life."</p>
-          <div class="c-hero__actions reveal-delay-4">
-            <a href="quote.html" class="btn btn-outline btn-outline-light">Book a Consultation</a>
+          <div class="flex gap-md reveal-delay-4">
+            <a href="quote.html" class="inline-flex items-center justify-center px-10 py-4 border border-white text-white font-accent uppercase tracking-[0.15em] text-[0.8125rem] rounded-full transition-all hover:bg-white hover:text-neutral-900">Book a Consultation</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section bg-secondary">
-      <div class="container">
-        <div class="maker-manifesto">
+    <!-- Manifesto -->
+    <section class="py-12 md:py-16 lg:py-20 bg-neutral-300">
+      <div class="container mx-auto px-lg">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
           <div class="reveal">
-            <span class="eyebrow">Manifesto</span>
-            <h2>We design for lived-in decades, not trend cycles.</h2>
-            <p class="text-soft">Our work starts with restraint: fewer features, better details, stronger materials.
+            <span class="block font-accent uppercase tracking-[0.2em] text-[0.8125rem] font-semibold text-accent mb-6">Manifesto</span>
+            <h2 class="font-display text-[clamp(2.5rem,5vw,3.5rem)] leading-[1.1] mb-12">We design for lived-in decades, not trend cycles.</h2>
+            <p class="font-body text-neutral-600 text-[1.150rem] leading-[1.8] mb-12 max-w-xl">Our work starts with restraint: fewer features, better details, stronger materials.
               Every line should serve use, longevity, and tactile quality.</p>
-            <div class="home-checklist">
-              <div class="home-checklist__item">
-                <span class="home-checklist__dot"></span>
-                <p>Joinery first, ornament second.</p>
+            <div class="space-y-md mt-xl">
+              <div class="flex items-start gap-4">
+                <span class="w-2 h-2 rounded-full bg-accent mt-2 shrink-0"></span>
+                <p class="font-body text-neutral-800 dark:text-neutral-200">Joinery first, ornament second.</p>
               </div>
-              <div class="home-checklist__item">
-                <span class="home-checklist__dot"></span>
-                <p>Low-VOC finish systems with easy lifetime maintenance.</p>
+              <div class="flex items-start gap-4">
+                <span class="w-2 h-2 rounded-full bg-accent mt-2 shrink-0"></span>
+                <p class="font-body text-neutral-800 dark:text-neutral-200">Low-VOC finish systems with easy lifetime maintenance.</p>
               </div>
-              <div class="home-checklist__item">
-                <span class="home-checklist__dot"></span>
-                <p>Built dimensions calibrated to real spaces and circulation.</p>
+              <div class="flex items-start gap-4">
+                <span class="w-2 h-2 rounded-full bg-accent mt-2 shrink-0"></span>
+                <p class="font-body text-neutral-800 dark:text-neutral-200">Built dimensions calibrated to real spaces and circulation.</p>
               </div>
             </div>
           </div>
           <div class="reveal reveal-delay-1">
             <img src="../assets/images/bench_ash_minimalist_1772797422014.png" alt="Maker shaping a furniture edge"
-              class="img-responsive">
+              class="w-full h-auto rounded-[18px] shadow-xl">
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="text-center reveal u-mb-xl">
-          <span class="eyebrow">Weekly Diary</span>
-          <h2>Recent Bench Notes</h2>
+    <!-- Weekly Diary -->
+    <section class="py-12 md:py-16 lg:py-20 bg-neutral-200">
+      <div class="container mx-auto px-lg">
+        <div class="text-center reveal mb-16">
+          <span class="block font-accent uppercase tracking-[0.2em] text-[0.8125rem] font-semibold text-accent mb-6">Weekly Diary</span>
+          <h2 class="font-display text-[clamp(2.5rem,5vw,3.5rem)] leading-[1.1]">Recent Bench Notes</h2>
         </div>
-        <div class="maker-diary">
-          <article class="maker-diary__entry reveal reveal-delay-1">
+        <div class="grid md:grid-cols-3 gap-xl max-md:grid-cols-1">
+          <article class="group bg-white shadow-sm overflow-hidden rounded-xl reveal reveal-delay-1">
             <img src="../assets/images/artisan_hands_sketching_final_elite_1772799471631.png"
-              alt="Design sketches for a new series">
-            <div class="maker-diary__body">
-              <span class="eyebrow">Monday</span>
-              <h3>Concept sketching and grain selection</h3>
-              <p class="text-soft">Finding the rhythm of the new collection through pencil and wood.</p>
+              alt="Design sketches for a new series" class="w-full aspect-[4/3] object-cover">
+            <div class="p-md space-y-2">
+              <span class="block font-accent uppercase tracking-[0.1em] text-[0.7rem] font-bold text-accent">Monday</span>
+              <h3 class="font-display text-xl">Concept sketching and grain selection</h3>
+              <p class="font-body text-neutral-600 text-[0.9375rem] leading-relaxed opacity-80">Finding the rhythm of the new collection through pencil and wood.</p>
             </div>
           </article>
-          <article class="maker-diary__entry reveal reveal-delay-2">
+          <article class="group bg-white shadow-sm overflow-hidden rounded-xl reveal reveal-delay-2">
             <img src="../assets/images/workshop_planning_moodboard_elite_1772798816405.png"
-              alt="Workshop atmosphere and planning">
-            <div class="maker-diary__body">
-              <span class="eyebrow">Wednesday</span>
-              <h3>Mock assembly and movement check</h3>
-              <p class="text-soft">Dry-fit components to account for seasonal wood movement.</p>
+              alt="Workshop atmosphere and planning" class="w-full aspect-[4/3] object-cover">
+            <div class="p-md space-y-2">
+              <span class="block font-accent uppercase tracking-[0.1em] text-[0.7rem] font-bold text-accent">Wednesday</span>
+              <h3 class="font-display text-xl">Mock assembly and movement check</h3>
+              <p class="font-body text-neutral-600 text-[0.9375rem] leading-relaxed opacity-80">Dry-fit components to account for seasonal wood movement.</p>
             </div>
           </article>
-          <article class="maker-diary__entry reveal reveal-delay-3">
+          <article class="group bg-white shadow-sm overflow-hidden rounded-xl reveal reveal-delay-3">
             <img src="../assets/images/joinery_dovetail_perfection_1772797451512.png"
-              alt="Detail of handcrafted joinery">
-            <div class="maker-diary__body">
-              <span class="eyebrow">Friday</span>
-              <h3>Joinery cleanup and finish prep</h3>
-              <p class="text-soft">Final hand-sanding sequence before oil and wax treatment.</p>
+              alt="Detail of handcrafted joinery" class="w-full aspect-[4/3] object-cover">
+            <div class="p-md space-y-2">
+              <span class="block font-accent uppercase tracking-[0.1em] text-[0.7rem] font-bold text-accent">Friday</span>
+              <h3 class="font-display text-xl">Joinery cleanup and finish prep</h3>
+              <p class="font-body text-neutral-600 text-[0.9375rem] leading-relaxed opacity-80">Final hand-sanding sequence before oil and wax treatment.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section bg-secondary">
-      <div class="container">
-        <div class="text-center reveal u-mb-xl">
-          <span class="eyebrow">Core Values</span>
-          <h2>How We Make Decisions in the Studio</h2>
+    <!-- Core Values -->
+    <section class="py-12 md:py-16 lg:py-20 bg-neutral-300">
+      <div class="container mx-auto px-lg">
+        <div class="text-center reveal mb-xl">
+          <span class="block font-accent uppercase tracking-[0.15em] text-[0.75rem] font-semibold text-accent mb-sm">Core Values</span>
+          <h2 class="font-display text-[clamp(2.5rem,5vw,3.5rem)] leading-[1.1]">How We Make Decisions in the Studio</h2>
         </div>
-        <div class="maker-values">
-          <article class="maker-values__item reveal reveal-delay-1">
-            <h3>Material Honesty</h3>
-            <p class="text-soft">We preserve natural grain movement and avoid over-correction.</p>
+        <div class="grid grid-cols-3 gap-xl max-lg:grid-cols-1">
+          <article class="p-xl bg-white rounded-sm shadow-sm reveal reveal-delay-1">
+            <h3 class="font-display text-2xl mb-4">Material Honesty</h3>
+            <p class="font-body text-neutral-600 text-[1rem] leading-relaxed opacity-80">We preserve natural grain movement and avoid over-correction.</p>
           </article>
-          <article class="maker-values__item reveal reveal-delay-2">
-            <h3>Functional Clarity</h3>
-            <p class="text-soft">Details are judged by use, comfort, and maintenance over time.</p>
+          <article class="p-xl bg-white rounded-sm shadow-sm reveal reveal-delay-2">
+            <h3 class="font-display text-2xl mb-4">Functional Clarity</h3>
+            <p class="font-body text-neutral-600 text-[1rem] leading-relaxed opacity-80">Details are judged by use, comfort, and maintenance over time.</p>
           </article>
-          <article class="maker-values__item reveal reveal-delay-3">
-            <h3>Quiet Boldness</h3>
-            <p class="text-soft">Confident silhouettes, restrained decoration, lasting presence.</p>
+          <article class="p-xl bg-white rounded-sm shadow-sm reveal reveal-delay-3">
+            <h3 class="font-display text-2xl mb-4">Quiet Boldness</h3>
+            <p class="font-body text-neutral-600 text-[1rem] leading-relaxed opacity-80">Confident silhouettes, restrained decoration, lasting presence.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section reveal section-cta">
-      <div class="container">
-        <h2>Want your project featured in this journal?</h2>
-        <p class="u-mb-lg u-max-w-600 u-center">Commission a custom piece and receive process updates from sketch to
+    <!-- CTA -->
+    <section class="py-12 md:py-16 lg:py-20 bg-neutral-200 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 text-center reveal">
+      <div class="container mx-auto px-lg">
+        <h2 class="font-display text-[clamp(2.5rem,8vw,4.5rem)] leading-[1.1] mb-lg">Want your project featured in this journal?</h2>
+        <p class="font-body text-[1.25rem] text-neutral-600 dark:text-neutral-300 max-w-[700px] mx-auto mb-2xl">Commission a custom piece and receive process updates from sketch to
           delivery.</p>
-        <a href="quote.html" class="btn btn-primary">Start Your Project</a>
+        <a href="quote.html" class="inline-flex items-center justify-center px-[2.5em] py-[1em] border border-neutral-900 dark:border-neutral-300 text-neutral-900 dark:text-white font-accent uppercase tracking-[0.15em] text-[0.875rem] font-medium rounded-full transition-all duration-300 hover:bg-neutral-900 hover:text-white dark:hover:bg-neutral-200 dark:hover:text-neutral-900 relative overflow-hidden z-10">Start Your Project</a>
       </div>
     </section>
   </main>
 
-  <footer id="footer-placeholder" class="c-footer"></footer>
+  <footer class="bg-neutral-300 dark:bg-neutral-800/50 py-8 md:py-12 lg:py-16 border-t border-neutral-400 dark:border-neutral-600">
+    <div class="container mx-auto px-6 max-w-[1320px] 2xl:max-w-[1440px]">
+      <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_2fr] gap-md gap-y-8">
+        <div class="col-span-full md:col-span-1">
+          <a href="../index.html" class="font-display text-2xl font-semibold tracking-widest uppercase mb-4 inline-block hover:text-accent transition-colors text-neutral-900 dark:text-white">GrainCraft</a>
+          <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] leading-relaxed max-w-[300px] max-sm:mx-auto max-sm:text-sm">Handcrafted furniture for slow living. We build pieces that endure for generations, honoring the material and the maker's hand.</p>
+        </div>
+        <div class="space-y-6">
+          <h4 class="font-accent text-[0.875rem] uppercase tracking-[0.2em] text-accent mb-6">Explore</h4>
+          <ul class="list-none p-0 m-0 space-y-2">
+            <li><a href="portfolio.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Portfolio</a></li>
+            <li><a href="portfolio.html#process" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">The Process</a></li>
+            <li><a href="portfolio.html#materials" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Materials</a></li>
+            <li><a href="shop.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Shop</a></li>
+          </ul>
+        </div>
+        <div class="space-y-6">
+          <h4 class="font-accent text-[0.875rem] uppercase tracking-[0.2em] text-accent mb-6">Studio</h4>
+          <ul class="list-none p-0 m-0 space-y-2">
+            <li><a href="about.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Our Story</a></li>
+            <li><a href="contact.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Contact</a></li>
+            <li><a href="quote.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Quote</a></li>
+          </ul>
+        </div>
+        <div class="col-span-full md:col-span-1">
+          <h4 class="font-accent text-[0.875rem] uppercase tracking-[0.2em] text-accent mb-6">Newsletter</h4>
+          <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] leading-relaxed max-w-[300px] max-sm:mx-auto max-sm:text-sm">Join our studio notes for insights into craftsmanship.</p>
+          <form class="flex mt-6 max-sm:max-w-[400px] max-sm:mx-auto max-sm:mt-4 gap-1">
+            <input type="email" class="flex-1 px-3 py-2.5 text-[0.8125rem] rounded-xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600 font-body text-neutral-900 dark:text-white focus:outline-none focus:border-accent transition-colors" placeholder="Your email" required>
+            <button type="submit" class="px-4 py-2.5 text-[0.8125rem] bg-accent text-white font-accent uppercase tracking-wider cursor-pointer transition-colors hover:bg-accent-hover rounded-full">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="mt-6 pt-4 border-t border-neutral-400 dark:border-neutral-600 flex justify-between items-center text-neutral-600 dark:text-neutral-400 text-[0.875rem] max-sm:flex-col max-sm:gap-4 max-sm:text-center max-sm:mt-4 max-sm:pt-3">
+        <p class="max-sm:text-xs">&copy; 2026 GrainCraft Studio. All rights reserved.</p>
+        <div class="flex gap-6 max-sm:gap-4">
+          <a href="#" class="font-body text-neutral-600 dark:text-neutral-400 hover:text-accent transition-colors max-sm:text-xs">Privacy Policy</a>
+          <a href="#" class="font-body text-neutral-600 dark:text-neutral-400 hover:text-accent transition-colors max-sm:text-xs">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>

@@ -28,3 +28,10 @@ All notable changes to the **GrainCraft** template will be documented in this fi
 - Integrated multiple "elite" custom visual assets.
 - Implemented filtering system for portfolio projects.
 - Added dynamic stats counter and interactive intersection observes.
+
+## [1.0.2] - 2026-03-11
+### Changed
+- Internal implementation updates during styling experiments.
+
+### Fixed
+- Cleaned the project back to the stylesheet-driven baseline after removing the unused Tailwind runtime approach.
