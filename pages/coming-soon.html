@@ -72,8 +72,8 @@
 
 <body class="font-body text-neutral-900 dark:text-neutral-100 bg-neutral-200 dark:bg-neutral-900 antialiased overflow-x-hidden m-0">
   <nav class="fixed top-0 left-0 w-full z-[1000] border-b border-transparent transition-all duration-300 h-[80px] text-neutral-900 dark:text-white [&.is-scrolled]:bg-white dark:[&.is-scrolled]:bg-neutral-900/95 [&.is-scrolled]:backdrop-blur-[20px] [&.is-scrolled]:shadow-sm [&.is-scrolled]:border-neutral-400 dark:[&.is-scrolled]:border-neutral-600 c-navbar">
-    <div class="container mx-auto px-6 max-w-[1320px] 2xl:max-w-[1440px] flex justify-between items-center h-full c-navbar__container">
-      <a href="../index.html" class="font-display text-2xl font-semibold tracking-[0.05em] uppercase transition-colors hover:text-accent c-navbar__logo">GrainCraft</a>
+    <div class="container mx-auto px-6 max-sm:px-4 max-w-[1320px] 2xl:max-w-[1440px] flex justify-between items-center h-full c-navbar__container">
+      <a href="../index.html" class="font-display text-2xl max-sm:text-xl font-semibold tracking-[0.05em] uppercase transition-colors hover:text-accent c-navbar__logo">GrainCraft</a>
       <ul class="hidden lg:flex items-center gap-12 list-none m-0 p-0">
         <li class="relative group/home flex items-center h-full c-navbar__dropdown">
           <a href="../index.html" class="c-navbar__link font-accent uppercase text-[0.875rem] tracking-widest py-2 flex items-center transition-colors hover:text-accent">Home <span class="iconify ml-2 transition-transform duration-300 group-hover/home:-rotate-180" data-icon="lucide:chevron-down"></span></a>
@@ -90,13 +90,12 @@
         <li class="flex items-center h-full"><a href="quote.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">Quote</a></li>
         <li class="flex items-center h-full"><a href="contact.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">Contact</a></li>
       </ul>
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 max-sm:gap-2">
         <button id="theme-toggle" class="p-2 rounded-full transition-colors hover:bg-neutral-300/20 dark:hover:bg-neutral-800/40 text-current flex items-center justify-center w-10 h-10" aria-label="Toggle Dark Mode">
           <span class="iconify text-xl hidden dark:block" data-icon="lucide:sun"></span>
           <span class="iconify text-xl block dark:hidden" data-icon="lucide:moon"></span>
         </button>
         <button id="dir-toggle" class="min-w-[44px] h-8 border border-current rounded-full font-accent text-[0.625rem] tracking-widest uppercase flex items-center justify-center transition-all bg-white/10 dark:bg-neutral-800/50 hover:bg-white/20 dark:hover:bg-neutral-700/50 gap-1 px-3" aria-label="Toggle Text Direction">
-          <span class="iconify h-4 w-4" data-icon="lucide:languages"></span>
           <span class="dir-label">LTR</span>
         </button>
         <div class="mobile-toggle lg:hidden cursor-pointer p-2 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Open menu">
@@ -104,19 +103,37 @@
         </div>
       </div>
     </div>
+  </nav>
 
-    <!-- Mobile menu -->
-    <div class="c-navbar__menu fixed top-[80px] left-0 right-0 bottom-0 bg-white dark:bg-neutral-900 z-[999] overflow-y-auto lg:hidden" aria-hidden="true">
-      <ul class="list-none p-6 pt-12 space-y-2">
-        <li><a href="../index.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Home</a></li>
+  <!-- Mobile menu overlay: outside nav so opening never changes nav styles = smooth in all sections -->
+  <div class="c-navbar__backdrop fixed inset-0 z-[9998] bg-neutral-900/40 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden" aria-hidden="true"></div>
+  <div class="c-navbar__menu c-navbar__menu--drawer fixed bottom-0 bg-white dark:bg-neutral-900 overflow-y-auto z-[9999] lg:hidden" aria-hidden="true">
+      <div class="flex items-center justify-between p-4 border-b border-neutral-200 dark:border-neutral-700">
+        <span class="font-accent uppercase text-[0.75rem] tracking-widest text-neutral-500 dark:text-neutral-400">Menu</span>
+        <button type="button" class="c-navbar__menu-close p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors text-neutral-900 dark:text-white" aria-label="Close menu">
+          <span class="iconify text-2xl" data-icon="lucide:x"></span>
+        </button>
+      </div>
+      <ul class="list-none p-6 pt-6 space-y-2">
+        <li>
+          <details class="c-navbar__menu-details group/details">
+            <summary class="flex items-center justify-between py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+              Home
+              <span class="iconify text-lg transition-transform duration-200 group-open/details:rotate-180" data-icon="lucide:chevron-down"></span>
+            </summary>
+            <ul class="list-none pl-4 pt-1 pb-2 space-y-1 border-l-2 border-neutral-200 dark:border-neutral-700 ml-2 mt-1">
+              <li><a href="../index.html" class="block py-2 font-accent text-[0.8125rem] tracking-wider uppercase text-neutral-900 dark:text-white hover:text-accent">Home 1</a></li>
+              <li><a href="home-2.html" class="block py-2 font-accent text-[0.8125rem] tracking-wider uppercase text-neutral-900 dark:text-white hover:text-accent">Home 2</a></li>
+            </ul>
+          </details>
+        </li>
         <li><a href="portfolio.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Portfolio</a></li>
         <li><a href="about.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">About</a></li>
         <li><a href="shop.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Shop</a></li>
         <li><a href="quote.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Quote</a></li>
         <li><a href="contact.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Contact</a></li>
       </ul>
-    </div>
-  </nav>
+  </div>
 
   <main>
     <section class="flex min-h-[85vh] items-center bg-neutral-300 pt-[160px] max-sm:pt-[120px] text-center page-hero page-hero-center">
@@ -136,44 +153,47 @@
     </section>
   </main>
 
-  <footer class="bg-neutral-300 dark:bg-neutral-800/50 py-8 md:py-12 lg:py-16 border-t border-neutral-400 dark:border-neutral-600">
+  <footer class="bg-neutral-300 dark:bg-neutral-800/50 py-6 md:py-14 lg:py-16 border-t border-neutral-400 dark:border-neutral-600">
     <div class="container mx-auto px-6 max-w-[1320px] 2xl:max-w-[1440px]">
-      <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_2fr] gap-md gap-y-8">
-        <div class="col-span-full md:col-span-1">
-          <a href="../index.html" class="font-display text-2xl font-semibold tracking-widest uppercase mb-4 inline-block hover:text-accent transition-colors text-neutral-900 dark:text-white">GrainCraft</a>
-          <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] leading-relaxed max-w-[300px] max-sm:mx-auto max-sm:text-sm">Handcrafted furniture for slow living. We build pieces that endure for generations, honoring the material and the maker's hand.</p>
+      <div class="grid grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.5fr] gap-x-6 gap-y-6 md:gap-10 lg:gap-12 lg:gap-y-10">
+        <div class="col-span-2 lg:col-span-1">
+          <a href="../index.html" class="font-display text-2xl font-semibold tracking-[0.08em] uppercase mb-3 md:mb-5 inline-block text-neutral-900 dark:text-white hover:text-accent transition-colors duration-200">GrainCraft</a>
+          <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] leading-relaxed max-w-[280px]">
+            Handcrafted furniture for slow living. We build pieces that endure for generations, honoring the material and the maker's hand.</p>
         </div>
-        <div class="space-y-6">
-          <h4 class="font-accent text-[0.875rem] uppercase tracking-[0.2em] text-accent mb-6">Explore</h4>
-          <ul class="list-none p-0 m-0 space-y-2">
-            <li><a href="portfolio.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Portfolio</a></li>
-            <li><a href="portfolio.html#process" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">The Process</a></li>
-            <li><a href="portfolio.html#materials" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Materials</a></li>
-            <li><a href="shop.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Shop</a></li>
+        <div>
+          <h4 class="font-accent text-[0.75rem] uppercase tracking-[0.2em] text-accent mb-3 md:mb-5">Explore</h4>
+          <ul class="list-none p-0 m-0 space-y-2 md:space-y-3">
+            <li><a href="portfolio.html" class="c-footer__link">Portfolio</a></li>
+            <li><a href="portfolio.html#process" class="c-footer__link">The Process</a></li>
+            <li><a href="portfolio.html#materials" class="c-footer__link">Materials</a></li>
+            <li><a href="shop.html" class="c-footer__link">Shop</a></li>
           </ul>
         </div>
-        <div class="space-y-6">
-          <h4 class="font-accent text-[0.875rem] uppercase tracking-[0.2em] text-accent mb-6">Studio</h4>
-          <ul class="list-none p-0 m-0 space-y-2">
-            <li><a href="about.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Our Story</a></li>
-            <li><a href="contact.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Contact</a></li>
-            <li><a href="quote.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Quote</a></li>
+        <div>
+          <h4 class="font-accent text-[0.75rem] uppercase tracking-[0.2em] text-accent mb-3 md:mb-5">Studio</h4>
+          <ul class="list-none p-0 m-0 space-y-2 md:space-y-3">
+            <li><a href="about.html" class="c-footer__link">Our Story</a></li>
+            <li><a href="contact.html" class="c-footer__link">Contact</a></li>
+            <li><a href="quote.html" class="c-footer__link">Quote</a></li>
           </ul>
         </div>
-        <div class="col-span-full md:col-span-1">
-          <h4 class="font-accent text-[0.875rem] uppercase tracking-[0.2em] text-accent mb-6">Newsletter</h4>
-          <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] leading-relaxed max-w-[300px] max-sm:mx-auto max-sm:text-sm">Join our studio notes for insights into craftsmanship.</p>
-          <form class="flex mt-6 max-sm:max-w-[400px] max-sm:mx-auto max-sm:mt-4 gap-1">
-            <input type="email" class="flex-1 px-3 py-2.5 text-[0.8125rem] rounded-xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600 font-body text-neutral-900 dark:text-white focus:outline-none focus:border-accent transition-colors" placeholder="Your email" required>
-            <button type="submit" class="px-4 py-2.5 text-[0.8125rem] bg-accent text-white font-accent uppercase tracking-wider cursor-pointer transition-colors hover:bg-accent-hover rounded-full">Join</button>
+        <div class="col-span-2 lg:col-span-1">
+          <h4 class="font-accent text-[0.75rem] uppercase tracking-[0.2em] text-accent mb-3 md:mb-5">Newsletter</h4>
+          <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] leading-relaxed max-w-[300px] mb-3 md:mb-5">
+            Join our studio notes for insights into craftsmanship.</p>
+          <form class="flex max-w-[320px] gap-1" action="#" method="post">
+            <input type="email" name="email" placeholder="Your email" required
+              class="flex-1 min-w-0 px-3 py-2.5 text-[0.8125rem] rounded-xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600 font-body text-neutral-900 dark:text-white placeholder:text-neutral-500 focus:outline-none focus:border-accent transition-colors">
+            <button type="submit" class="shrink-0 px-4 py-2.5 text-[0.8125rem] bg-accent text-white font-accent uppercase tracking-wider rounded-xl hover:bg-accent-hover transition-colors cursor-pointer">Join</button>
           </form>
         </div>
       </div>
-      <div class="mt-6 pt-4 border-t border-neutral-400 dark:border-neutral-600 flex justify-between items-center text-neutral-600 dark:text-neutral-400 text-[0.875rem] max-sm:flex-col max-sm:gap-4 max-sm:text-center max-sm:mt-4 max-sm:pt-3">
-        <p class="max-sm:text-xs">&copy; 2026 GrainCraft Studio. All rights reserved.</p>
-        <div class="flex gap-6 max-sm:gap-4">
-          <a href="#" class="font-body text-neutral-600 dark:text-neutral-400 hover:text-accent transition-colors max-sm:text-xs">Privacy Policy</a>
-          <a href="#" class="font-body text-neutral-600 dark:text-neutral-400 hover:text-accent transition-colors max-sm:text-xs">Terms</a>
+      <div class="mt-6 pt-4 md:mt-10 md:pt-6 border-t border-neutral-400 dark:border-neutral-600 flex flex-wrap justify-between items-center gap-3 md:gap-4 text-[0.8125rem] text-neutral-600 dark:text-neutral-400">
+        <p class="order-2 sm:order-1">&copy; 2026 GrainCraft Studio. All rights reserved.</p>
+        <div class="flex gap-4 md:gap-6 order-1 sm:order-2">
+          <a href="#" class="c-footer__link">Privacy Policy</a>
+          <a href="#" class="c-footer__link">Terms</a>
         </div>
       </div>
     </div>

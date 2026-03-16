@@ -57,6 +57,47 @@ html {
   display: block;
 }
 
+/* Mobile menu: drawer (70–80% width), full height from top. Overlay lives outside nav so opening never changes nav = smooth everywhere. */
+.c-navbar__menu--drawer {
+  top: 0;
+  left: auto;
+  width: 80%;
+  max-width: 22rem;
+  right: 0;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.08);
+}
+.c-navbar__menu--drawer.is-open {
+  transform: translateX(0);
+}
+
+/* Mobile menu: Home dropdown (details/summary) – no default triangle */
+.c-navbar__menu-details summary::-webkit-details-marker { display: none; }
+.c-navbar__menu-details summary::marker { display: none; }
+
+/* Backdrop: visible when menu is open */
+.c-navbar__backdrop {
+  transition: opacity 0.3s ease;
+}
+.c-navbar__backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Hamburger → X when mobile menu is open */
+.mobile-toggle.is-active .hamburger {
+  background: transparent;
+}
+.mobile-toggle.is-active .hamburger::before {
+  top: 0;
+  transform: translateY(0) rotate(45deg);
+}
+.mobile-toggle.is-active .hamburger::after {
+  top: 0;
+  transform: translateY(0) rotate(-45deg);
+}
+
 /* Active nav link (current page) – desktop menu and mobile menu only (not logo) */
 .c-navbar ul a.is-active,
 .c-navbar__menu a.is-active {
@@ -88,4 +129,36 @@ html[data-theme="dark"] .c-filter__btn.is-active,
 html.dark .c-filter__btn.is-active {
   background-color: var(--color-neutral-100);
   color: var(--color-neutral-900);
+}
+
+/* Global CTA button style – matches navbar RTL/LTR toggle */
+.c-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  border: 1px solid currentColor;
+  font-family: var(--font-accent, 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: transparent;
+  color: inherit;
+  transition: background-color 200ms var(--ease-premium, cubic-bezier(0.16, 1, 0.3, 1)), color 200ms var(--ease-premium, cubic-bezier(0.16, 1, 0.3, 1)), box-shadow 200ms var(--ease-premium, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+html[data-theme="dark"] .c-cta,
+html.dark .c-cta {
+  background-color: transparent;
+}
+
+.c-cta:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .c-cta:hover,
+html.dark .c-cta:hover {
+  background-color: rgba(255, 255, 255, 0.12);
 }

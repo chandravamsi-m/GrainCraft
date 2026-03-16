@@ -75,8 +75,8 @@
 
 <body class="font-body text-neutral-900 dark:text-neutral-100 bg-neutral-200 dark:bg-neutral-900 antialiased overflow-x-hidden m-0">
   <nav class="fixed top-0 left-0 w-full z-[1000] border-b border-transparent transition-all duration-300 h-[80px] text-neutral-900 dark:text-white [&.is-scrolled]:bg-white dark:[&.is-scrolled]:bg-neutral-900/95 [&.is-scrolled]:backdrop-blur-[20px] [&.is-scrolled]:shadow-sm [&.is-scrolled]:border-neutral-400 dark:[&.is-scrolled]:border-neutral-600 c-navbar">
-    <div class="container mx-auto px-6 max-w-[1320px] 2xl:max-w-[1440px] flex justify-between items-center h-full c-navbar__container">
-      <a href="../index.html" class="font-display text-2xl font-semibold tracking-[0.05em] uppercase transition-colors hover:text-accent c-navbar__logo">GrainCraft</a>
+    <div class="container mx-auto px-6 max-sm:px-4 max-w-[1320px] 2xl:max-w-[1440px] flex justify-between items-center h-full c-navbar__container">
+      <a href="../index.html" class="font-display text-2xl max-sm:text-xl font-semibold tracking-[0.05em] uppercase transition-colors hover:text-accent c-navbar__logo">GrainCraft</a>
       <ul class="hidden lg:flex items-center gap-12 list-none m-0 p-0">
         <li class="relative group/home flex items-center h-full c-navbar__dropdown">
           <a href="../index.html" class="c-navbar__link font-accent uppercase text-[0.875rem] tracking-widest py-2 flex items-center transition-colors hover:text-accent">Home <span class="iconify ml-2 transition-transform duration-300 group-hover/home:-rotate-180" data-icon="lucide:chevron-down"></span></a>
@@ -93,13 +93,12 @@
         <li class="flex items-center h-full"><a href="quote.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">Quote</a></li>
         <li class="flex items-center h-full"><a href="contact.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">Contact</a></li>
       </ul>
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 max-sm:gap-2">
         <button id="theme-toggle" class="p-2 rounded-full transition-colors hover:bg-neutral-300/20 dark:hover:bg-neutral-800/40 text-current flex items-center justify-center w-10 h-10" aria-label="Toggle Dark Mode">
           <span class="iconify text-xl hidden dark:block" data-icon="lucide:sun"></span>
           <span class="iconify text-xl block dark:hidden" data-icon="lucide:moon"></span>
         </button>
         <button id="dir-toggle" class="min-w-[44px] h-8 border border-current rounded-full font-accent text-[0.625rem] tracking-widest uppercase flex items-center justify-center transition-all bg-white/10 dark:bg-neutral-800/50 hover:bg-white/20 dark:hover:bg-neutral-700/50 gap-1 px-3" aria-label="Toggle Text Direction">
-          <span class="iconify h-4 w-4" data-icon="lucide:languages"></span>
           <span class="dir-label">LTR</span>
         </button>
         <div class="mobile-toggle lg:hidden cursor-pointer p-2 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Open menu">
@@ -107,19 +106,37 @@
         </div>
       </div>
     </div>
+  </nav>
 
-    <!-- Mobile menu -->
-    <div class="c-navbar__menu fixed top-[80px] left-0 right-0 bottom-0 bg-white dark:bg-neutral-900 z-[999] overflow-y-auto lg:hidden" aria-hidden="true">
-      <ul class="list-none p-6 pt-12 space-y-2">
-        <li><a href="../index.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Home</a></li>
+  <!-- Mobile menu overlay: outside nav so opening never changes nav styles = smooth in all sections -->
+  <div class="c-navbar__backdrop fixed inset-0 z-[9998] bg-neutral-900/40 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden" aria-hidden="true"></div>
+  <div class="c-navbar__menu c-navbar__menu--drawer fixed bottom-0 bg-white dark:bg-neutral-900 overflow-y-auto z-[9999] lg:hidden" aria-hidden="true">
+      <div class="flex items-center justify-between p-4 border-b border-neutral-200 dark:border-neutral-700">
+        <span class="font-accent uppercase text-[0.75rem] tracking-widest text-neutral-500 dark:text-neutral-400">Menu</span>
+        <button type="button" class="c-navbar__menu-close p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors text-neutral-900 dark:text-white" aria-label="Close menu">
+          <span class="iconify text-2xl" data-icon="lucide:x"></span>
+        </button>
+      </div>
+      <ul class="list-none p-6 pt-6 space-y-2">
+        <li>
+          <details class="c-navbar__menu-details group/details">
+            <summary class="flex items-center justify-between py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+              Home
+              <span class="iconify text-lg transition-transform duration-200 group-open/details:rotate-180" data-icon="lucide:chevron-down"></span>
+            </summary>
+            <ul class="list-none pl-4 pt-1 pb-2 space-y-1 border-l-2 border-neutral-200 dark:border-neutral-700 ml-2 mt-1">
+              <li><a href="../index.html" class="block py-2 font-accent text-[0.8125rem] tracking-wider uppercase text-neutral-900 dark:text-white hover:text-accent">Home 1</a></li>
+              <li><a href="home-2.html" class="block py-2 font-accent text-[0.8125rem] tracking-wider uppercase text-neutral-900 dark:text-white hover:text-accent">Home 2</a></li>
+            </ul>
+          </details>
+        </li>
         <li><a href="portfolio.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent is-active">Portfolio</a></li>
         <li><a href="about.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">About</a></li>
         <li><a href="shop.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Shop</a></li>
         <li><a href="quote.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Quote</a></li>
         <li><a href="contact.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Contact</a></li>
       </ul>
-    </div>
-  </nav>
+  </div>
 
   <main class="pt-[80px]">
     <!-- Hero -->
@@ -144,53 +161,53 @@
     <section class="py-10 md:py-16 bg-neutral-300 dark:bg-neutral-800/40">
       <div class="container mx-auto px-6 max-w-[1320px] 2xl:max-w-[1440px]">
         <article class="c-portfolio-card group relative overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-lg mb-5 reveal" data-category="all">
-          <img src="../assets/images/bespoke_dining_table_1772776118812.png" alt="Modern dining room with wooden table and chairs" class="c-portfolio-card__img w-full aspect-[21/9] object-cover transition-transform duration-500 ease-premium group-hover:scale-105">
-          <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/85 to-transparent flex flex-col justify-end p-6 md:p-8 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <img src="../assets/images/bespoke_dining_table_1772776118812.png" alt="Modern dining room with wooden table and chairs" class="c-portfolio-card__img w-full aspect-[4/3] md:aspect-[21/9] object-cover transition-transform duration-500 ease-premium group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/85 to-transparent flex flex-col justify-end p-6 md:p-8 opacity-100 lg:opacity-0 transition-opacity duration-300 lg:group-hover:opacity-100">
             <span class="block font-accent uppercase tracking-[0.15em] text-[0.75rem] font-semibold text-white/80 mb-1">Dining</span>
-            <h2 class="font-display text-white text-2xl md:text-3xl m-0 translate-y-2 transition-transform duration-300 group-hover:translate-y-0">Ridge Table / Seattle</h2>
+            <h2 class="font-display text-white text-2xl md:text-3xl m-0 translate-y-0 lg:translate-y-2 transition-transform duration-300 lg:group-hover:translate-y-0">Ridge Table / Seattle</h2>
           </div>
         </article>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+        <div class="grid grid-cols-2 gap-4 md:grid-cols-3 max-sm:grid-cols-1 max-sm:gap-3">
           <article class="c-portfolio-card group relative overflow-hidden rounded-2xl shadow-md aspect-[4/3] transition-all duration-300 hover:shadow-lg reveal reveal-delay-1" data-category="living">
             <img src="../assets/images/credenza_oak_premium_1772797312630.png" alt="Modern credenza with abstract art" class="c-portfolio-card__img w-full h-full object-cover transition-transform duration-500 ease-premium group-hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/85 to-transparent flex flex-col justify-end p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/85 to-transparent flex flex-col justify-end p-5 opacity-100 lg:opacity-0 transition-opacity duration-300 lg:group-hover:opacity-100">
               <span class="block font-accent uppercase tracking-[0.12em] text-[0.65rem] font-semibold text-white/80 mb-1">Living</span>
-              <h3 class="font-display text-white text-lg md:text-xl m-0 translate-y-2 transition-transform duration-300 group-hover:translate-y-0">Float Credenza / Napa</h3>
+              <h3 class="font-display text-white text-lg md:text-xl m-0 translate-y-0 lg:translate-y-2 transition-transform duration-300 lg:group-hover:translate-y-0">Float Credenza / Napa</h3>
             </div>
           </article>
           <article class="c-portfolio-card group relative overflow-hidden rounded-2xl shadow-md aspect-[4/3] transition-all duration-300 hover:shadow-lg reveal reveal-delay-1" data-category="dining">
             <img src="../assets/images/chair_heirloom_detail_1772797328031.png" alt="Wooden armchair in workshop" class="c-portfolio-card__img w-full h-full object-cover transition-transform duration-500 ease-premium group-hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/85 to-transparent flex flex-col justify-end p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/85 to-transparent flex flex-col justify-end p-5 opacity-100 lg:opacity-0 transition-opacity duration-300 lg:group-hover:opacity-100">
               <span class="block font-accent uppercase tracking-[0.12em] text-[0.65rem] font-semibold text-white/80 mb-1">Dining</span>
-              <h3 class="font-display text-white text-lg md:text-xl m-0 translate-y-2 transition-transform duration-300 group-hover:translate-y-0">Ash Bench / Bend</h3>
+              <h3 class="font-display text-white text-lg md:text-xl m-0 translate-y-0 lg:translate-y-2 transition-transform duration-300 lg:group-hover:translate-y-0">Ash Bench / Bend</h3>
             </div>
           </article>
           <article class="c-portfolio-card group relative overflow-hidden rounded-2xl shadow-md aspect-[4/3] transition-all duration-300 hover:shadow-lg reveal reveal-delay-2" data-category="office">
             <img src="../assets/images/bookshelf_custom_walnut_1772797467756.png" alt="Tall wooden bookshelf" class="c-portfolio-card__img w-full h-full object-cover transition-transform duration-500 ease-premium group-hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/85 to-transparent flex flex-col justify-end p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/85 to-transparent flex flex-col justify-end p-5 opacity-100 lg:opacity-0 transition-opacity duration-300 lg:group-hover:opacity-100">
               <span class="block font-accent uppercase tracking-[0.12em] text-[0.65rem] font-semibold text-white/80 mb-1">Office</span>
-              <h3 class="font-display text-white text-lg md:text-xl m-0 translate-y-2 transition-transform duration-300 group-hover:translate-y-0">Library Wall System / Portland</h3>
+              <h3 class="font-display text-white text-lg md:text-xl m-0 translate-y-0 lg:translate-y-2 transition-transform duration-300 lg:group-hover:translate-y-0">Library Wall System / Portland</h3>
             </div>
           </article>
           <article class="c-portfolio-card group relative overflow-hidden rounded-2xl shadow-md aspect-[4/3] transition-all duration-300 hover:shadow-lg reveal reveal-delay-2" data-category="kitchen">
             <img src="../assets/images/console_cherry_bespoke_1772797437270.png" alt="Console table with decorative items" class="c-portfolio-card__img w-full h-full object-cover transition-transform duration-500 ease-premium group-hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/85 to-transparent flex flex-col justify-end p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/85 to-transparent flex flex-col justify-end p-5 opacity-100 lg:opacity-0 transition-opacity duration-300 lg:group-hover:opacity-100">
               <span class="block font-accent uppercase tracking-[0.12em] text-[0.65rem] font-semibold text-white/80 mb-1">Kitchen</span>
-              <h3 class="font-display text-white text-lg md:text-xl m-0 translate-y-2 transition-transform duration-300 group-hover:translate-y-0">River Console / Austin</h3>
+              <h3 class="font-display text-white text-lg md:text-xl m-0 translate-y-0 lg:translate-y-2 transition-transform duration-300 lg:group-hover:translate-y-0">River Console / Austin</h3>
             </div>
           </article>
           <article class="c-portfolio-card group relative overflow-hidden rounded-2xl shadow-md aspect-[4/3] transition-all duration-300 hover:shadow-lg reveal reveal-delay-3" data-category="outdoor">
             <img src="../assets/images/maker_hands_chisel_1772797359182.png" alt="Hands carving wood with chisels" class="c-portfolio-card__img w-full h-full object-cover transition-transform duration-500 ease-premium group-hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/85 to-transparent flex flex-col justify-end p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/85 to-transparent flex flex-col justify-end p-5 opacity-100 lg:opacity-0 transition-opacity duration-300 lg:group-hover:opacity-100">
               <span class="block font-accent uppercase tracking-[0.12em] text-[0.65rem] font-semibold text-white/80 mb-1">Studio</span>
-              <h3 class="font-display text-white text-lg md:text-xl m-0 translate-y-2 transition-transform duration-300 group-hover:translate-y-0">Handcrafted Detail</h3>
+              <h3 class="font-display text-white text-lg md:text-xl m-0 translate-y-0 lg:translate-y-2 transition-transform duration-300 lg:group-hover:translate-y-0">Handcrafted Detail</h3>
             </div>
           </article>
           <article class="c-portfolio-card group relative overflow-hidden rounded-2xl shadow-md aspect-[4/3] transition-all duration-300 hover:shadow-lg reveal reveal-delay-3" data-category="all">
             <img src="../assets/images/joinery_dovetail_perfection_1772797451512.png" alt="Wood joinery detail" class="c-portfolio-card__img w-full h-full object-cover transition-transform duration-500 ease-premium group-hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/85 to-transparent flex flex-col justify-end p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/85 to-transparent flex flex-col justify-end p-5 opacity-100 lg:opacity-0 transition-opacity duration-300 lg:group-hover:opacity-100">
               <span class="block font-accent uppercase tracking-[0.12em] text-[0.65rem] font-semibold text-white/80 mb-1">Custom</span>
-              <h3 class="font-display text-white text-lg md:text-xl m-0 translate-y-2 transition-transform duration-300 group-hover:translate-y-0">Signature Joinery</h3>
+              <h3 class="font-display text-white text-lg md:text-xl m-0 translate-y-0 lg:translate-y-2 transition-transform duration-300 lg:group-hover:translate-y-0">Signature Joinery</h3>
             </div>
           </article>
         </div>
@@ -243,49 +260,49 @@
           <span class="block font-accent uppercase tracking-[0.2em] text-[0.75rem] font-semibold text-accent mb-1">The Collection</span>
           <h2 class="font-display text-[clamp(1.875rem,4vw,2.75rem)] leading-[1.15] text-neutral-900 dark:text-neutral-100">Small Home Goods</h2>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-          <article class="group reveal reveal-delay-1 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600/60 rounded-2xl p-5 shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-sm:gap-4 lg:gap-10">
+          <article class="group reveal reveal-delay-1 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600/60 rounded-2xl p-5 max-sm:p-4 shadow-md hover:shadow-lg transition-shadow duration-300">
             <a href="shop.html" class="block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-xl">
-              <div class="aspect-[1] overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-700/50 mb-4 transition-transform duration-300 group-hover:scale-[1.02]">
+              <div class="aspect-[1] overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-700/50 mb-4 max-sm:mb-3 transition-transform duration-300 group-hover:scale-[1.02]">
                 <img src="../assets/images/bench_ash_minimalist_1772797422014.png" alt="Live-edge wooden cutting board" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 class="font-display text-[1.125rem] md:text-lg text-neutral-900 dark:text-neutral-100">Live-Edge Board</h3>
-                <span class="font-accent text-[0.9375rem] font-semibold text-accent">$180</span>
+                <h3 class="font-display text-[1.125rem] max-sm:text-[1rem] md:text-lg text-neutral-900 dark:text-neutral-100">Live-Edge Board</h3>
+                <span class="font-accent text-[0.9375rem] max-sm:text-[0.875rem] font-semibold text-accent">$180</span>
               </div>
-              <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.875rem] mt-1.5">Hard maple & walnut, food-safe oil</p>
-              <span class="inline-block mt-3 font-accent text-[0.75rem] uppercase tracking-widest text-neutral-600 dark:text-neutral-400 group-hover:text-accent transition-colors">Inquire →</span>
+              <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.875rem] max-sm:text-[0.8125rem] mt-1.5">Hard maple & walnut, food-safe oil</p>
+              <span class="inline-block mt-3 max-sm:mt-2 font-accent text-[0.75rem] max-sm:text-[0.6875rem] uppercase tracking-widest text-neutral-600 dark:text-neutral-400 group-hover:text-accent transition-colors">Inquire →</span>
             </a>
           </article>
-          <article class="group reveal reveal-delay-2 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600/60 rounded-2xl p-5 shadow-md hover:shadow-lg transition-shadow duration-300">
+          <article class="group reveal reveal-delay-2 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600/60 rounded-2xl p-5 max-sm:p-4 shadow-md hover:shadow-lg transition-shadow duration-300">
             <a href="shop.html" class="block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-xl">
-              <div class="aspect-[1] overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-700/50 mb-4 transition-transform duration-300 group-hover:scale-[1.02]">
+              <div class="aspect-[1] overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-700/50 mb-4 max-sm:mb-3 transition-transform duration-300 group-hover:scale-[1.02]">
                 <img src="../assets/images/bespoke_oak_bench_elite_1772799424279.png" alt="Three-legged wooden stool" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 class="font-display text-[1.125rem] md:text-lg text-neutral-900 dark:text-neutral-100">Milking Stool</h3>
-                <span class="font-accent text-[0.9375rem] font-semibold text-accent">$120</span>
+                <h3 class="font-display text-[1.125rem] max-sm:text-[1rem] md:text-lg text-neutral-900 dark:text-neutral-100">Milking Stool</h3>
+                <span class="font-accent text-[0.9375rem] max-sm:text-[0.875rem] font-semibold text-accent">$120</span>
               </div>
-              <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.875rem] mt-1.5">Solid oak, 14" seat height</p>
-              <span class="inline-block mt-3 font-accent text-[0.75rem] uppercase tracking-widest text-neutral-600 dark:text-neutral-400 group-hover:text-accent transition-colors">Inquire →</span>
+              <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.875rem] max-sm:text-[0.8125rem] mt-1.5">Solid oak, 14" seat height</p>
+              <span class="inline-block mt-3 max-sm:mt-2 font-accent text-[0.75rem] max-sm:text-[0.6875rem] uppercase tracking-widest text-neutral-600 dark:text-neutral-400 group-hover:text-accent transition-colors">Inquire →</span>
             </a>
           </article>
-          <article class="group reveal reveal-delay-3 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600/60 rounded-2xl p-5 shadow-md hover:shadow-lg transition-shadow duration-300">
+          <article class="group reveal reveal-delay-3 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600/60 rounded-2xl p-5 max-sm:p-4 shadow-md hover:shadow-lg transition-shadow duration-300">
             <a href="shop.html" class="block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-xl">
-              <div class="aspect-[1] overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-700/50 mb-4 transition-transform duration-300 group-hover:scale-[1.02]">
+              <div class="aspect-[1] overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-700/50 mb-4 max-sm:mb-3 transition-transform duration-300 group-hover:scale-[1.02]">
                 <img src="../assets/images/wood_shavings_texture_1772797404024.png" alt="Wooden serving bowl" class="w-full h-full object-cover">
               </div>
               <div class="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 class="font-display text-[1.125rem] md:text-lg text-neutral-900 dark:text-neutral-100">Serving Bowl</h3>
-                <span class="font-accent text-[0.9375rem] font-semibold text-accent">$75</span>
+                <h3 class="font-display text-[1.125rem] max-sm:text-[1rem] md:text-lg text-neutral-900 dark:text-neutral-100">Serving Bowl</h3>
+                <span class="font-accent text-[0.9375rem] max-sm:text-[0.875rem] font-semibold text-accent">$75</span>
               </div>
-              <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.875rem] mt-1.5">Turned walnut, natural edge</p>
-              <span class="inline-block mt-3 font-accent text-[0.75rem] uppercase tracking-widest text-neutral-600 dark:text-neutral-400 group-hover:text-accent transition-colors">Inquire →</span>
+              <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.875rem] max-sm:text-[0.8125rem] mt-1.5">Turned walnut, natural edge</p>
+              <span class="inline-block mt-3 max-sm:mt-2 font-accent text-[0.75rem] max-sm:text-[0.6875rem] uppercase tracking-widest text-neutral-600 dark:text-neutral-400 group-hover:text-accent transition-colors">Inquire →</span>
             </a>
           </article>
         </div>
         <div class="mt-12 text-center reveal">
-          <a href="shop.html" class="inline-flex items-center justify-center px-8 py-3.5 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-accent uppercase tracking-[0.12em] text-[0.8125rem] font-semibold rounded-full transition-all hover:bg-neutral-800 dark:hover:bg-neutral-200">View all in shop</a>
+          <a href="shop.html" class="c-cta">View all in shop</a>
         </div>
       </div>
     </section>
@@ -298,7 +315,7 @@
             <span class="block font-accent uppercase tracking-[0.18em] text-[0.75rem] font-semibold text-accent mb-3">Materials & finish</span>
             <h2 class="font-display text-[clamp(1.5rem,3.5vw,2.25rem)] leading-[1.2] text-neutral-900 dark:text-neutral-100 mb-4">We prototype every finish before final application.</h2>
             <p class="font-body text-neutral-600 dark:text-neutral-400 text-[1.0625rem] leading-relaxed mb-6">Our process is an open-ended dialogue, tailored to meet your unique project requirements. We sample stains, oils, and topcoats so the final piece matches your vision.</p>
-            <a href="about.html" class="inline-flex items-center justify-center px-8 py-3.5 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-accent uppercase tracking-[0.12em] text-[0.8125rem] font-semibold rounded-full transition-all hover:bg-neutral-800 dark:hover:bg-neutral-200">Learn more</a>
+            <a href="about.html" class="c-cta">Learn more</a>
           </div>
           <div class="order-1 lg:order-2 reveal reveal-delay-1 w-full">
             <div class="rounded-2xl overflow-hidden bg-neutral-300 dark:bg-neutral-800 aspect-[4/3] w-full">
@@ -310,44 +327,47 @@
     </section>
   </main>
 
-  <footer class="bg-neutral-300 dark:bg-neutral-800/50 py-8 md:py-12 lg:py-16 border-t border-neutral-400 dark:border-neutral-600">
+  <footer class="bg-neutral-300 dark:bg-neutral-800/50 py-6 md:py-14 lg:py-16 border-t border-neutral-400 dark:border-neutral-600">
     <div class="container mx-auto px-6 max-w-[1320px] 2xl:max-w-[1440px]">
-      <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_2fr] gap-md gap-y-8">
-        <div class="col-span-full md:col-span-1">
-          <a href="../index.html" class="font-display text-2xl font-semibold tracking-widest uppercase mb-4 inline-block hover:text-accent transition-colors text-neutral-900 dark:text-white">GrainCraft</a>
-          <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] leading-relaxed max-w-[300px] max-sm:mx-auto max-sm:text-sm">Handcrafted furniture for slow living. We build pieces that endure for generations, honoring the material and the maker's hand.</p>
+      <div class="grid grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.5fr] gap-x-6 gap-y-6 md:gap-10 lg:gap-12 lg:gap-y-10">
+        <div class="col-span-2 lg:col-span-1">
+          <a href="../index.html" class="font-display text-2xl font-semibold tracking-[0.08em] uppercase mb-3 md:mb-5 inline-block text-neutral-900 dark:text-white hover:text-accent transition-colors duration-200">GrainCraft</a>
+          <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] leading-relaxed max-w-[280px]">
+            Handcrafted furniture for slow living. We build pieces that endure for generations, honoring the material and the maker's hand.</p>
         </div>
-        <div class="space-y-6">
-          <h4 class="font-accent text-[0.875rem] uppercase tracking-[0.2em] text-accent mb-6">Explore</h4>
-          <ul class="list-none p-0 m-0 space-y-2">
-            <li><a href="portfolio.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Portfolio</a></li>
-            <li><a href="portfolio.html#process" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">The Process</a></li>
-            <li><a href="portfolio.html#materials" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Materials</a></li>
-            <li><a href="shop.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Shop</a></li>
+        <div>
+          <h4 class="font-accent text-[0.75rem] uppercase tracking-[0.2em] text-accent mb-3 md:mb-5">Explore</h4>
+          <ul class="list-none p-0 m-0 space-y-2 md:space-y-3">
+            <li><a href="portfolio.html" class="c-footer__link">Portfolio</a></li>
+            <li><a href="portfolio.html#process" class="c-footer__link">The Process</a></li>
+            <li><a href="portfolio.html#materials" class="c-footer__link">Materials</a></li>
+            <li><a href="shop.html" class="c-footer__link">Shop</a></li>
           </ul>
         </div>
-        <div class="space-y-6">
-          <h4 class="font-accent text-[0.875rem] uppercase tracking-[0.2em] text-accent mb-6">Studio</h4>
-          <ul class="list-none p-0 m-0 space-y-2">
-            <li><a href="about.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Our Story</a></li>
-            <li><a href="contact.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Contact</a></li>
-            <li><a href="quote.html" class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] transition-colors hover:text-accent max-sm:text-xs">Quote</a></li>
+        <div>
+          <h4 class="font-accent text-[0.75rem] uppercase tracking-[0.2em] text-accent mb-3 md:mb-5">Studio</h4>
+          <ul class="list-none p-0 m-0 space-y-2 md:space-y-3">
+            <li><a href="about.html" class="c-footer__link">Our Story</a></li>
+            <li><a href="contact.html" class="c-footer__link">Contact</a></li>
+            <li><a href="quote.html" class="c-footer__link">Quote</a></li>
           </ul>
         </div>
-        <div class="col-span-full md:col-span-1">
-          <h4 class="font-accent text-[0.875rem] uppercase tracking-[0.2em] text-accent mb-6">Newsletter</h4>
-          <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] leading-relaxed max-w-[300px] max-sm:mx-auto max-sm:text-sm">Join our studio notes for insights into craftsmanship.</p>
-          <form class="flex mt-6 max-sm:max-w-[400px] max-sm:mx-auto max-sm:mt-4 gap-1">
-            <input type="email" class="flex-1 px-3 py-2.5 text-[0.8125rem] rounded-xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600 font-body text-neutral-900 dark:text-white focus:outline-none focus:border-accent transition-colors" placeholder="Your email" required>
-            <button type="submit" class="px-4 py-2.5 text-[0.8125rem] bg-accent text-white font-accent uppercase tracking-wider cursor-pointer transition-colors hover:bg-accent-hover rounded-full">Join</button>
+        <div class="col-span-2 lg:col-span-1">
+          <h4 class="font-accent text-[0.75rem] uppercase tracking-[0.2em] text-accent mb-3 md:mb-5">Newsletter</h4>
+          <p class="font-body text-neutral-600 dark:text-neutral-400 text-[0.9375rem] leading-relaxed max-w-[300px] mb-3 md:mb-5">
+            Join our studio notes for insights into craftsmanship.</p>
+          <form class="flex max-w-[320px] gap-1" action="#" method="post">
+            <input type="email" name="email" placeholder="Your email" required
+              class="flex-1 min-w-0 px-3 py-2.5 text-[0.8125rem] rounded-xl bg-neutral-200 dark:bg-neutral-800 border border-neutral-400 dark:border-neutral-600 font-body text-neutral-900 dark:text-white placeholder:text-neutral-500 focus:outline-none focus:border-accent transition-colors">
+            <button type="submit" class="shrink-0 px-4 py-2.5 text-[0.8125rem] bg-accent text-white font-accent uppercase tracking-wider rounded-xl hover:bg-accent-hover transition-colors cursor-pointer">Join</button>
           </form>
         </div>
       </div>
-      <div class="mt-6 pt-4 border-t border-neutral-400 dark:border-neutral-600 flex justify-between items-center text-neutral-600 dark:text-neutral-400 text-[0.875rem] max-sm:flex-col max-sm:gap-4 max-sm:text-center max-sm:mt-4 max-sm:pt-3">
-        <p class="max-sm:text-xs">&copy; 2026 GrainCraft Studio. All rights reserved.</p>
-        <div class="flex gap-6 max-sm:gap-4">
-          <a href="#" class="font-body text-neutral-600 dark:text-neutral-400 hover:text-accent transition-colors max-sm:text-xs">Privacy Policy</a>
-          <a href="#" class="font-body text-neutral-600 dark:text-neutral-400 hover:text-accent transition-colors max-sm:text-xs">Terms</a>
+      <div class="mt-6 pt-4 md:mt-10 md:pt-6 border-t border-neutral-400 dark:border-neutral-600 flex flex-wrap justify-between items-center gap-3 md:gap-4 text-[0.8125rem] text-neutral-600 dark:text-neutral-400">
+        <p class="order-2 sm:order-1">&copy; 2026 GrainCraft Studio. All rights reserved.</p>
+        <div class="flex gap-4 md:gap-6 order-1 sm:order-2">
+          <a href="#" class="c-footer__link">Privacy Policy</a>
+          <a href="#" class="c-footer__link">Terms</a>
         </div>
       </div>
     </div>

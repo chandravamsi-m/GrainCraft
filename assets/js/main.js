@@ -98,18 +98,45 @@ function initNav() {
 
   const mobileToggle = document.querySelector('.mobile-toggle');
   const navMenu = document.querySelector('.c-navbar__menu');
+  const backdrop = document.querySelector('.c-navbar__backdrop');
+  const menuCloseBtn = document.querySelector('.c-navbar__menu-close');
+
+  function closeMobileMenu() {
+    if (navMenu) navMenu.classList.remove('is-open');
+    if (mobileToggle) mobileToggle.classList.remove('is-active');
+    if (backdrop) backdrop.classList.remove('is-open');
+    if (navbar && window.scrollY <= 50) navbar.classList.remove('is-mobile-open');
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+  }
+
+  function openMobileMenu() {
+    if (navMenu) navMenu.classList.add('is-open');
+    if (mobileToggle) mobileToggle.classList.add('is-active');
+    if (backdrop) backdrop.classList.add('is-open');
+    if (navbar) navbar.classList.add('is-mobile-open');
+    var scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+    if (scrollbarW > 0) document.body.style.paddingRight = scrollbarW + 'px';
+    document.body.style.overflow = 'hidden';
+  }
 
   if (mobileToggle && navMenu) {
     mobileToggle.onclick = (e) => {
       e.preventDefault();
-      const isOpen = navMenu.classList.toggle('is-open');
-      mobileToggle.classList.toggle('is-active');
-      
-      if (isOpen) {
-        navbar.classList.add('is-mobile-open');
-      } else if (window.scrollY <= 50) {
-        navbar.classList.remove('is-mobile-open');
-      }
+      const isOpen = navMenu.classList.contains('is-open');
+      if (isOpen) closeMobileMenu();
+      else openMobileMenu();
+    };
+  }
+
+  if (backdrop) {
+    backdrop.onclick = () => closeMobileMenu();
+  }
+
+  if (menuCloseBtn && navMenu) {
+    menuCloseBtn.onclick = (e) => {
+      e.preventDefault();
+      closeMobileMenu();
     };
   }
 
