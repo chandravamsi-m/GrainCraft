@@ -2,6 +2,10 @@
    GrainCraft - Minimal Base (Tailwind handles all styling)
    ============================================================ */
 
+/* ------------------------------------------------------------
+   1. CSS VARIABLES (Colors, Spacing, Typography)
+   ------------------------------------------------------------ */
+
 :root {
   --container-padding: 1.5rem;
   --color-neutral-100: #FAF8F5;
@@ -25,10 +29,16 @@
   --font-body: 'Outfit', sans-serif;
 }
 
+/* ------------------------------------------------------------
+   2. GLOBAL UTILITIES & BASE ELEMENTS
+   ------------------------------------------------------------ */
 html {
   scroll-behavior: smooth;
 }
 
+/* ------------------------------------------------------------
+   3. ANIMATIONS & REVEALS
+   ------------------------------------------------------------ */
 @keyframes ken-burns {
   0% { transform: scale(1) translate(0, 0); }
   100% { transform: scale(1.1) translate(-2%, -2%); }
@@ -49,6 +59,9 @@ html {
   transform: translateY(0);
 }
 
+/* ------------------------------------------------------------
+   4. NAVIGATION & MOBILE OFF-CANVAS
+   ------------------------------------------------------------ */
 .c-navbar__menu {
   display: none;
 }
@@ -104,6 +117,9 @@ html {
   color: var(--color-accent);
 }
 
+/* ------------------------------------------------------------
+   5. SPECIFIC UI COMPONENTS (Filters, Buttons)
+   ------------------------------------------------------------ */
 /* Portfolio filter buttons – default and active so JS can toggle which one is selected */
 .c-filter__btn {
   background-color: var(--color-neutral-300);
