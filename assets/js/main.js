@@ -19,6 +19,11 @@
   }
 })();
 
+/**
+ * Update the sun/moon icon based on the current theme
+ * @param {HTMLElement} el - The theme toggle button element
+ * @param {string} theme - The current theme ('light' or 'dark')
+ */
 function updateToggleIcon(el, theme) {
   if (!el) return;
   // If theme is dark, the sun icon is shown via CSS [data-theme='dark']
@@ -27,6 +32,9 @@ function updateToggleIcon(el, theme) {
   el.classList.toggle('is-dark', theme === 'dark');
 }
 
+/**
+ * Initialize dark/light mode functionality using localStorage and system preferences
+ */
 function initTheme() {
   const themeToggle = document.getElementById('theme-toggle');
   const currentTheme = localStorage.getItem('theme');
@@ -53,6 +61,11 @@ function initTheme() {
   };
 }
 
+/**
+ * Update the text and aria-label of the language/direction toggle button
+ * @param {HTMLElement} el - The direction toggle button element
+ * @param {string} dir - The current direction ('ltr' or 'rtl')
+ */
 function updateDirToggleLabel(el, dir) {
   if (!el) return;
   const nextDir = dir === 'rtl' ? 'ltr' : 'rtl';
@@ -65,6 +78,9 @@ function updateDirToggleLabel(el, dir) {
   el.setAttribute('aria-label', `Switch to ${nextDir.toUpperCase()} layout`);
 }
 
+/**
+ * Initialize LTR/RTL layout switching functionality
+ */
 function initDirectionToggle() {
   const dirToggle = document.getElementById('dir-toggle');
   const currentDir = document.documentElement.getAttribute('dir') || 'ltr';
@@ -81,6 +97,9 @@ function initDirectionToggle() {
   };
 }
 
+/**
+ * Initialize all navigation logic including scroll states, mobile menu toggling, and dropdowns
+ */
 function initNav() {
   const navbar = document.querySelector('.c-navbar');
   if (!navbar) return;
@@ -152,6 +171,9 @@ function initNav() {
   });
 }
 
+/**
+ * Initialize scroll reveal animations using IntersectionObserver
+ */
 function initAnimations() {
   const revealElements = document.querySelectorAll('.reveal');
   if (!revealElements.length) return;
@@ -175,6 +197,9 @@ function initAnimations() {
   });
 }
 
+/**
+ * Initialize number counting animations for statistics sections
+ */
 function initCounter() {
   const counters = document.querySelectorAll('.c-stat__number');
   if (!counters.length) return;
@@ -215,6 +240,9 @@ function initCounter() {
   counters.forEach((counter) => counterObserver.observe(counter));
 }
 
+/**
+ * Initialize the portfolio category filtering logic
+ */
 function initPortfolioFilter() {
   const filterButtons = document.querySelectorAll('.c-filter__btn');
   const portfolioItems = document.querySelectorAll('.c-portfolio-card');
@@ -242,6 +270,9 @@ function initPortfolioFilter() {
   });
 }
 
+/**
+ * Initialize multi-step quote form functionality (next/prev steps, validation)
+ */
 function initQuoteForm() {
   const form = document.getElementById('quote-form');
   if (!form) return;
