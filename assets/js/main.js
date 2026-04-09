@@ -28,29 +28,31 @@ function updateToggleIcon(el, theme) {
 }
 
 function initTheme() {
-  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggles = document.querySelectorAll('.theme-toggle, #theme-toggle');
   const currentTheme = localStorage.getItem('theme');
 
-  if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    document.documentElement.classList.toggle('dark', currentTheme === 'dark');
-    updateToggleIcon(themeToggle, currentTheme);
-  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    document.documentElement.classList.toggle('dark', true);
-    updateToggleIcon(themeToggle, 'dark');
+  if (themeToggles.length > 0) {
+    if (currentTheme) {
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      document.documentElement.classList.toggle('dark', currentTheme === 'dark');
+      themeToggles.forEach(btn => updateToggleIcon(btn, currentTheme));
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.documentElement.classList.toggle('dark', true);
+      themeToggles.forEach(btn => updateToggleIcon(btn, 'dark'));
+    }
+
+    themeToggles.forEach(btn => {
+      btn.onclick = () => {
+        const theme = document.documentElement.getAttribute('data-theme');
+        const targetTheme = theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', targetTheme);
+        document.documentElement.classList.toggle('dark', targetTheme === 'dark');
+        localStorage.setItem('theme', targetTheme);
+        themeToggles.forEach(el => updateToggleIcon(el, targetTheme));
+      };
+    });
   }
-
-  if (!themeToggle) return;
-
-  themeToggle.onclick = () => {
-    const theme = document.documentElement.getAttribute('data-theme');
-    const targetTheme = theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', targetTheme);
-    document.documentElement.classList.toggle('dark', targetTheme === 'dark');
-    localStorage.setItem('theme', targetTheme);
-    updateToggleIcon(themeToggle, targetTheme);
-  };
 }
 
 function updateDirToggleLabel(el, dir) {
@@ -66,19 +68,21 @@ function updateDirToggleLabel(el, dir) {
 }
 
 function initDirectionToggle() {
-  const dirToggle = document.getElementById('dir-toggle');
+  const dirToggles = document.querySelectorAll('.dir-toggle, #dir-toggle');
   const currentDir = document.documentElement.getAttribute('dir') || 'ltr';
-  updateDirToggleLabel(dirToggle, currentDir);
+  dirToggles.forEach(btn => updateDirToggleLabel(btn, currentDir));
 
-  if (!dirToggle) return;
+  if (!dirToggles.length) return;
 
-  dirToggle.onclick = () => {
-    const activeDir = document.documentElement.getAttribute('dir') || 'ltr';
-    const nextDir = activeDir === 'rtl' ? 'ltr' : 'rtl';
-    document.documentElement.setAttribute('dir', nextDir);
-    localStorage.setItem('dir', nextDir);
-    updateDirToggleLabel(dirToggle, nextDir);
-  };
+  dirToggles.forEach(btn => {
+    btn.onclick = () => {
+      const activeDir = document.documentElement.getAttribute('dir') || 'ltr';
+      const nextDir = activeDir === 'rtl' ? 'ltr' : 'rtl';
+      document.documentElement.setAttribute('dir', nextDir);
+      localStorage.setItem('dir', nextDir);
+      dirToggles.forEach(el => updateDirToggleLabel(el, nextDir));
+    };
+  });
 }
 
 function initNav() {

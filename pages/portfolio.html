@@ -75,16 +75,16 @@
 </head>
 
 <body class="font-body text-neutral-900 dark:text-neutral-100 bg-neutral-200 dark:bg-neutral-900 antialiased overflow-x-hidden m-0">
-  <nav class="fixed top-0 left-0 w-full z-[1000] border-b border-transparent transition-all duration-300 h-[80px] text-neutral-900 dark:text-white [&.is-scrolled]:bg-white dark:[&.is-scrolled]:bg-neutral-900/95 [&.is-scrolled]:backdrop-blur-[20px] [&.is-scrolled]:shadow-sm [&.is-scrolled]:border-neutral-400 dark:[&.is-scrolled]:border-neutral-600 c-navbar">
-    <div class="container mx-auto px-6 max-sm:px-4 max-w-[1320px] 2xl:max-w-[1440px] flex justify-between items-center h-full c-navbar__container">
-      <a href="../index.html" class="flex items-center gap-2.5 font-display text-2xl max-sm:text-xl font-semibold tracking-[0.05em] uppercase transition-colors hover:text-accent c-navbar__logo">
-        <div class="w-7 h-7 flex-shrink-0" style="-webkit-mask: url('../assets/images/logo-icon.svg') no-repeat center; mask: url('../assets/images/logo-icon.svg') no-repeat center; background-color: currentColor;"></div>
+  <nav class="fixed top-0 left-0 w-full z-[1000] border-b border-transparent transition-all duration-300 ease-premium h-[80px] text-neutral-900 dark:text-white [&.is-scrolled]:bg-surface dark:[&.is-scrolled]:bg-neutral-900/95 [&.is-scrolled]:backdrop-blur-[20px] [&.is-scrolled]:shadow-sm [&.is-scrolled]:border-neutral-400 dark:[&.is-scrolled]:border-neutral-600 c-navbar">
+    <div class="container mx-auto px-6 max-sm:px-4 max-w-[1320px] 2xl:max-w-[1440px] flex justify-between items-center h-full c-navbar__container transition-all duration-500 ease-premium">
+      <a href="../index.html" class="flex items-center gap-2.5 font-display text-2xl max-sm:text-[1.35rem] font-semibold tracking-[0.05em] uppercase transition-colors hover:text-accent c-navbar__logo">
+        <div class="w-8 h-8 max-sm:w-9 max-sm:h-9 flex-shrink-0" style="-webkit-mask: url('../assets/images/logo-icon.svg') no-repeat center; mask: url('../assets/images/logo-icon.svg') no-repeat center; background-color: currentColor;"></div>
         <span>GrainCraft</span>
       </a>
       <ul class="hidden lg:flex items-center gap-12 list-none m-0 p-0">
         <li class="relative group/home flex items-center h-full c-navbar__dropdown">
           <a href="../index.html" class="c-navbar__link font-accent uppercase text-[0.875rem] tracking-widest py-2 flex items-center transition-colors hover:text-accent">Home <span class="iconify ml-2 transition-transform duration-300 group-hover/home:-rotate-180" data-icon="lucide:chevron-down"></span></a>
-          <div class="c-navbar__dropdown-menu absolute top-full left-0 pt-1 opacity-0 invisible translate-y-1 group-hover/home:opacity-100 group-hover/home:visible group-hover/home:translate-y-0 transition-all duration-300 z-10 w-48">
+          <div class="c-navbar__dropdown-menu absolute top-full left-0 pt-1 opacity-0 invisible translate-y-1 group-hover/home:opacity-100 group-hover/home:visible group-hover/home:translate-y-0 transition-all duration-300 z-10 w-32">
             <ul class="bg-white dark:bg-neutral-900 border border-neutral-400 dark:border-neutral-800 shadow-xl list-none m-0 p-2 rounded-sm">
               <li><a href="../index.html" class="block px-4 py-2 font-accent text-[0.8125rem] tracking-wider uppercase text-neutral-900 dark:text-white transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-accent rounded-sm">Home 1</a></li>
               <li><a href="home-2.html" class="block px-4 py-2 font-accent text-[0.8125rem] tracking-wider uppercase text-neutral-900 dark:text-white transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-accent rounded-sm">Home 2</a></li>
@@ -97,15 +97,18 @@
         <li class="flex items-center h-full"><a href="quote.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">Quote</a></li>
         <li class="flex items-center h-full"><a href="contact.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 transition-colors hover:text-accent">Contact</a></li>
       </ul>
-      <div class="flex items-center gap-4 max-sm:gap-2">
-        <button id="theme-toggle" class="p-2 rounded-full transition-colors hover:bg-neutral-300/20 dark:hover:bg-neutral-800/40 text-current flex items-center justify-center w-10 h-10" aria-label="Toggle Dark Mode">
-          <span class="iconify text-xl hidden dark:block" data-icon="lucide:sun"></span>
-          <span class="iconify text-xl block dark:hidden" data-icon="lucide:moon"></span>
+      <div class="hidden lg:flex items-center gap-4">
+        <button class="theme-toggle p-2 rounded-full transition-colors hover:bg-neutral-300/20 dark:hover:bg-neutral-800/40 text-current flex items-center justify-center w-10 h-10" aria-label="Toggle Dark Mode">
+          <span class="iconify text-2xl hidden dark:block" data-icon="lucide:sun"></span>
+          <span class="iconify text-2xl block dark:hidden" data-icon="lucide:moon"></span>
         </button>
-        <button id="dir-toggle" class="min-w-[44px] h-8 border border-current rounded-full font-accent text-[0.625rem] tracking-widest uppercase flex items-center justify-center transition-all bg-white/10 dark:bg-neutral-800/50 hover:bg-white/20 dark:hover:bg-neutral-700/50 gap-1 px-3" aria-label="Toggle Text Direction">
-          <span class="dir-label">LTR</span>
+        <button class="dir-toggle min-w-[52px] h-8 border border-current rounded-full font-accent text-[0.6875rem] tracking-widest uppercase flex items-center justify-center transition-all bg-white/10 dark:bg-neutral-800/50 hover:bg-white/20 dark:hover:bg-neutral-700/50 gap-2 px-3.5" aria-label="Toggle Text Direction">
+          <span class="dir-label font-bold">LTR</span>
         </button>
-        <div class="mobile-toggle lg:hidden cursor-pointer p-2 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Open menu">
+      </div>
+
+      <div class="flex items-center gap-2 lg:hidden">
+        <div class="mobile-toggle cursor-pointer p-2 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Open menu">
           <div class="hamburger w-6 h-[2px] bg-current relative before:content-[''] before:absolute before:w-full before:h-full before:bg-current before:-top-2 after:content-[''] after:absolute after:w-full after:h-full after:bg-current after:top-2 transition-all"></div>
         </div>
       </div>
@@ -140,6 +143,22 @@
         <li><a href="quote.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Quote</a></li>
         <li><a href="contact.html" class="block py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent">Contact</a></li>
       </ul>
+    
+    <div class="px-6 py-2 mt-2 border-t border-neutral-200 dark:border-neutral-800">
+      <div class="flex flex-col">
+        <button class="theme-toggle flex items-center justify-between w-full py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent transition-colors" aria-label="Toggle Dark Mode">
+          <span>Theme</span>
+          <div class="flex items-center">
+            <span class="iconify text-xl hidden dark:block text-accent" data-icon="lucide:sun"></span>
+            <span class="iconify text-xl block dark:hidden text-accent" data-icon="lucide:moon"></span>
+          </div>
+        </button>
+        <button class="dir-toggle flex items-center justify-between w-full py-3 font-accent uppercase text-[0.875rem] tracking-widest text-neutral-900 dark:text-white hover:text-accent transition-colors" aria-label="Toggle Text Direction">
+          <span>Direction</span>
+          <span class="dir-label font-bold text-accent">LTR</span>
+        </button>
+      </div>
+    </div>
   </div>
 
   <main class="pt-[80px]">
