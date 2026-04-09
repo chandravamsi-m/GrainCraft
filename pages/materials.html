@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materials & Finishes - GrainCraft Studio</title>
+  <meta name="description" content="Explore the premium, sustainably sourced hardwoods and artisanal finishes we use to build your custom furniture. Learn about walnut, oak, maple, and cherry properties.">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logo-icon.svg">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  
+  <!-- Scripts -->
+  <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            neutral: { 100: '#FAF8F5', 200: '#F5F0E8', 300: '#EDE7D9', 400: '#D4C9B8', 500: '#9C8E80', 600: '#6B5D4F', 700: '#4A4036', 800: '#2A2420', 900: '#1C1410' },
+            accent: { DEFAULT: '#8B4A1C', hover: '#6B3614' },
+            primary: '#F5F0E8', secondary: '#EDE7D9', surface: '#FFFFFF'
+          },
+          fontFamily: { display: ['Playfair Display', 'serif'], body: ['Outfit', 'sans-serif'], accent: ['Outfit', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <script src="../assets/js/main.js" defer></script>
+  
+  <!-- SEO JSON-LD -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Our Materials & Finishes",
+      "description": "A guide to the sustainably sourced hardwoods and natural finishes utilized by GrainCraft Studio.",
+      "author": {
+        "@type": "Organization",
+        "name": "GrainCraft Studio"
+      }
+    }
+  </script>
+</head>
+<body class="font-body text-neutral-900 dark:text-neutral-100 bg-neutral-200 dark:bg-neutral-900 antialiased overflow-x-hidden m-0">
+  
+  <!-- ============================================ -->
+  <!-- NAVBAR SECTION -->
+  <!-- ============================================ -->
+  <nav class="fixed top-0 left-0 w-full z-[1000] border-b border-transparent transition-all duration-300 h-[80px] text-neutral-900 dark:text-white [&.is-scrolled]:bg-white dark:[&.is-scrolled]:bg-neutral-900/95 [&.is-scrolled]:backdrop-blur-[20px] c-navbar">
+    <div class="container mx-auto px-6 max-sm:px-4 max-w-[1320px] flex justify-between items-center h-full">
+      <a href="../index.html" class="flex items-center gap-2.5 font-display text-2xl max-sm:text-xl font-semibold tracking-[0.05em] uppercase hover:text-accent transition-colors">
+        <div class="w-7 h-7 flex-shrink-0" style="-webkit-mask: url('../assets/images/logo-icon.svg') no-repeat center; background-color: currentColor;"></div>
+        <span>GrainCraft</span>
+      </a>
+      <ul class="hidden lg:flex items-center gap-12" id="sv_nav_menu_desktop">
+        <!-- TODO: Customize navigation links -->
+        <li><a href="../index.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 hover:text-accent">Home</a></li>
+        <li><a href="portfolio.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 hover:text-accent">Portfolio</a></li>
+        <li><a href="materials.html" class="is-active font-accent uppercase text-[0.875rem] tracking-widest py-2 hover:text-accent" aria-current="page">Materials</a></li>
+        <li><a href="contact.html" class="font-accent uppercase text-[0.875rem] tracking-widest py-2 hover:text-accent">Contact</a></li>
+      </ul>
+      <div class="flex items-center gap-4">
+        <button id="theme-toggle" class="p-2 w-10 h-10 hover:bg-neutral-300/20 rounded-full" aria-label="Toggle Dark Mode">
+          <span class="iconify text-xl hidden dark:block" data-icon="lucide:sun"></span>
+          <span class="iconify text-xl block dark:hidden" data-icon="lucide:moon"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- MAIN CONTENT -->
+  <!-- ============================================ -->
+  <main>
+    
+    <!-- ============================================ -->
+    <!-- HEADER HERO SECTION -->
+    <!-- ============================================ -->
+    <header class="py-20 md:py-32 lg:py-40 bg-neutral-200 dark:bg-neutral-900 mt-20">
+      <div class="container mx-auto px-6 max-w-[1320px]">
+        <div class="reveal">
+          <span class="block font-accent uppercase tracking-[0.2em] text-[0.8125rem] font-semibold text-accent mb-2">Sustainably Sourced</span>
+          <h1 class="font-display font-normal leading-[1.1] text-[clamp(2.5rem,8vw,4.5rem)] max-w-[900px] mb-4 text-neutral-900 dark:text-white">The foundation of quality.</h1>
+          <p class="font-body text-neutral-600 dark:text-neutral-400 text-[1.125rem] max-w-[600px]">A piece of furniture is only as resilient as the timber it's carved from. We select only the highest grade domestic hardwoods.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- HARDWOODS COLLECTION GRID -->
+    <!-- ============================================ -->
+    <!-- TODO: Update images with your actual wood samples -->
+    <section class="py-16 md:py-24 bg-neutral-300 dark:bg-neutral-800/50" aria-label="Wood Species">
+      <div class="container mx-auto px-6 max-w-[1320px]">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <article class="bg-white dark:bg-neutral-900 rounded-2xl overflow-hidden reveal shadow-sm hover:shadow-xl transition-shadow duration-300">
+            <div class="aspect-square bg-neutral-400 dark:bg-neutral-700 w-full relative">
+              <img src="../assets/images/wood_walnut_sample_1772800101.jpg" alt="Black Walnut Wood Grain" class="absolute inset-0 w-full h-full object-cover">
+            </div>
+            <div class="p-8">
+              <h2 class="font-display text-2xl mb-2 text-neutral-900 dark:text-white">Black Walnut</h2>
+              <p class="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed">Renowned for its deep, rich chocolate hues and striking grain patterns. Walnut ages gracefully, developing a warm patina over time.</p>
+            </div>
+          </article>
+          
+          <article class="bg-white dark:bg-neutral-900 rounded-2xl overflow-hidden reveal shadow-sm hover:shadow-xl transition-shadow duration-300" style="transition-delay: 100ms;">
+            <div class="aspect-square bg-neutral-400 dark:bg-neutral-700 w-full relative">
+              <img src="../assets/images/wood_oak_sample_1772800115.jpg" alt="White Oak Wood Grain" class="absolute inset-0 w-full h-full object-cover">
+            </div>
+            <div class="p-8">
+              <h2 class="font-display text-2xl mb-2 text-neutral-900 dark:text-white">White Oak</h2>
+              <p class="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed">A cornerstone of traditional and modern furniture alike. Exceptionally strong, water-resistant, and features a clean, tight grain structure.</p>
+            </div>
+          </article>
+
+          <article class="bg-white dark:bg-neutral-900 rounded-2xl overflow-hidden reveal shadow-sm hover:shadow-xl transition-shadow duration-300" style="transition-delay: 200ms;">
+            <div class="aspect-square bg-neutral-400 dark:bg-neutral-700 w-full relative">
+              <img src="../assets/images/wood_maple_sample_1772800125.jpg" alt="Hard Maple Wood Grain" class="absolute inset-0 w-full h-full object-cover">
+            </div>
+            <div class="p-8">
+              <h2 class="font-display text-2xl mb-2 text-neutral-900 dark:text-white">Hard Maple</h2>
+              <p class="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed">Bright, smooth, and dense. Maple is highly resistant to wear and brings an airy, contemporary lightness to any interior environment.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================ -->
+  <!-- FOOTER SECTION -->
+  <!-- ============================================ -->
+  <!-- TODO: Update footer content -->
+  <footer class="bg-neutral-300 dark:bg-neutral-800/50 py-10 border-t border-neutral-400 dark:border-neutral-600 text-center">
+    <div class="container mx-auto px-6">
+      <p class="text-neutral-600 dark:text-neutral-400 text-sm">© 2026 GrainCraft Studio. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
